@@ -203,7 +203,7 @@ const appMeta: Record<Exclude<AppId, "project">, { title: string; icon: string; 
   activity: { title: "Activity Monitor", icon: "⌁", className: "icon-activity", size: [760, 570] },
   notes: { title: "Eventually, This Made Sense", icon: "≡", className: "icon-notes", size: [760, 600] },
   terminal: { title: "Terminal", icon: ">_", className: "icon-terminal", size: [720, 500] },
-  resume: { title: "Shivanya_SWE.pdf", icon: "PDF", className: "icon-resume", size: [820, 700] },
+  resume: { title: "Shivanya_Resume.pdf", icon: "PDF", className: "icon-resume", size: [820, 700] },
   mail: { title: "Mail Shivanya", icon: "↗", className: "icon-mail", size: [720, 600] },
 };
 
@@ -331,7 +331,7 @@ export default function Home() {
     if (normalized === "experience") { response = "Opening résumé-verified experience…"; setFinderSection("Experience"); openApp("finder"); }
     if (normalized === "research") { response = "Opening Research Lab…"; setFinderSection("Research Lab"); openApp("finder"); }
     if (normalized === "current") { response = "SafeDesk and ShivanyaOS are currently building."; setFinderSection("Currently Building"); openApp("finder"); }
-    if (normalized === "resume") { response = "Opening Shivanya_SWE.pdf…"; openApp("resume"); }
+    if (normalized === "resume") { response = "Opening Shivanya_Resume.pdf…"; openApp("resume"); }
     if (normalized === "contact" || normalized === "sudo hire-shivanya") { response = normalized.startsWith("sudo") ? "Permission granted. Opening contact application…" : "Opening Mail…"; openApp("mail"); }
     if (normalized === "git status") response = "On branch building-better-systems\nmodified: sleep_schedule\nuntracked: new_project_idea_47";
     if (normalized === "clear") return setTerminalLines([]);
@@ -369,7 +369,7 @@ export default function Home() {
           <DesktopIcon label="Projects" icon="⌁" tone="lavender" onOpen={() => { setFinderSection("Featured"); openApp("finder"); }} />
           <DesktopIcon label="Research Lab" icon="∿" tone="mint" onOpen={() => { setFinderSection("Research Lab"); openApp("finder"); }} />
           <DesktopIcon label="Archive" icon="⌂" tone="yellow" onOpen={() => { setFinderSection("Archive"); openApp("finder"); }} />
-          <DesktopIcon label="Shivanya_SWE.pdf" icon="PDF" tone="coral" onOpen={() => openApp("resume")} />
+          <DesktopIcon label="Shivanya_Resume.pdf" icon="PDF" tone="coral" onOpen={() => openApp("resume")} />
         </div>
 
         <div className="windows-layer">
@@ -462,7 +462,7 @@ function TerminalApp({ lines, run }: { lines: string[]; run: (command: string) =
 }
 
 function ResumeApp() {
-  return <div className="resume-app"><div className="resume-toolbar"><div><span className="pdf-badge">PDF</span><strong>Shivanya_SWE.pdf</strong><small>1 page · Updated July 2026</small></div><div><a href="/Shivanya_Resume.pdf" target="_blank" rel="noreferrer">Open full screen</a><a className="primary-button" href="/Shivanya_Resume.pdf" download>Download ↓</a></div></div><iframe src="/Shivanya_Resume.pdf#view=FitH" title="Shivanya Chandra résumé preview" /><div className="resume-fallback">Can’t see the preview? <a href="/Shivanya_Resume.pdf" target="_blank" rel="noreferrer">Open the résumé directly.</a></div></div>;
+  return <div className="resume-app"><div className="resume-toolbar"><div><span className="pdf-badge">PDF</span><strong>Shivanya_Resume.pdf</strong><small>1 page · Updated July 2026</small></div><div><a href="/Shivanya_Resume.pdf" target="_blank" rel="noreferrer">Open full screen</a><a className="primary-button" href="/Shivanya_Resume.pdf" download>Download ↓</a></div></div><iframe src="/Shivanya_Resume.pdf#view=FitH" title="Shivanya Chandra résumé preview" /><div className="resume-fallback">Can’t see the preview? <a href="/Shivanya_Resume.pdf" target="_blank" rel="noreferrer">Open the résumé directly.</a></div></div>;
 }
 
 function MailApp() {

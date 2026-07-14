@@ -45,9 +45,25 @@ test("keeps finished-site metadata and source content", async () => {
   assert.match(page, /ShivanyaOS/);
   assert.match(page, /AI Pipeline Observability/);
   assert.match(page, /RAG Reliability Evaluation/);
-  assert.match(page, /Shivanya_SWE\.pdf/);
+  assert.match(page, /Shivanya_Resume\.pdf/);
   assert.match(layout, /title:\s*"ShivanyaOS · Shivanya Chandra"/);
   assert.match(packageJson, /"name": "shivanya-os"/);
   assert.doesNotMatch(page, /SkeletonPreview|codex-preview/);
   assert.doesNotMatch(packageJson, /react-loading-skeleton/);
+});
+
+test("keeps the Cloudflare portfolio deep, human, and recruiter-friendly", async () => {
+  const [html, javascript] = await Promise.all([
+    readFile(new URL("../work/preview/index.html", import.meta.url), "utf8"),
+    readFile(new URL("../work/preview/preview.js", import.meta.url), "utf8"),
+  ]);
+
+  assert.match(html, /Start Here/);
+  assert.match(html, /Human Stuff/);
+  assert.match(javascript, /Outside the Terminal/);
+  assert.match(javascript, /Not every prompt deserves the most expensive model/);
+  assert.match(javascript, /30-second failure visibility/);
+  assert.match(javascript, /RAG Reliability Evaluation/);
+  assert.match(javascript, /Shivanya_Resume\.pdf/);
+  assert.doesNotMatch(`${html}\n${javascript}`, /Shivanya_SWE\.pdf/);
 });

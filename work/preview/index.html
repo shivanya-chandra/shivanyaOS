@@ -3,28 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="ShivanyaOS portfolio preview" />
+    <meta name="description" content="Shivanya Chandra's portfolio: backend systems, AI infrastructure, observability, research, teaching, and the person outside the terminal." />
     <title>ShivanyaOS · Shivanya Chandra</title>
     <link rel="stylesheet" href="./styles.css" />
-    <style>
-      .preview-window { position:absolute; }
-      .preview-window.hidden { display:none; }
-      .preview-project-list { display:grid; grid-template-columns:repeat(3,minmax(140px,1fr)); gap:14px; }
-      .preview-project-list button { border:1px solid rgba(27,34,54,.17); background:#fffefa; border-radius:11px; padding:0; overflow:hidden; text-align:left; color:#1b2236; cursor:pointer; }
-      .preview-project-list .folder-art { display:grid; }
-      .preview-project-list h3 { font-size:11px; margin:0 0 5px; }
-      .preview-project-list p { font-size:8px; color:#6c6f79; margin:0; line-height:1.4; }
-      .preview-project-list .project-card-copy { min-height:72px; }
-      .preview-tabs { display:flex; gap:4px; padding:10px 22px 0; border-bottom:1px solid rgba(27,34,54,.2); overflow:auto; }
-      .preview-tabs button { border:0; border-bottom:2px solid transparent; padding:9px 10px; background:transparent; white-space:nowrap; font-size:8px; color:#5f6470; cursor:pointer; }
-      .preview-tabs button.selected { border-color:#9c8cff; color:#1b2236; font-weight:700; }
-      .preview-window .title-bar { cursor:move; }
-      .finder-sidebar button { cursor:pointer; }
-      .finder-sidebar button span { width:20px; }
-      .preview-toast { position:fixed; right:18px; bottom:92px; z-index:30000; background:#1b2236; color:white; padding:10px 13px; border-radius:8px; font:8px var(--mono); opacity:0; transform:translateY(8px); transition:.2s; }
-      .preview-toast.show { opacity:1; transform:translateY(0); }
-      @media (max-width:720px) { .preview-project-list{grid-template-columns:repeat(2,minmax(120px,1fr))}.desktop-icons{top:20px}.preview-window{position:absolute}.contact-card>p{display:none} }
-    </style>
   </head>
   <body>
     <main class="os-root">
@@ -46,18 +27,20 @@
 
       <header class="menu-bar">
         <div class="menu-left">
-          <button class="brand-menu" id="brand-menu">◉ <strong>ShivanyaOS</strong></button>
-          <button data-menu="finder">File</button><button data-action="maximize">View</button><button id="navigate">Navigate</button><button data-menu="about">Help</button>
+          <button class="brand-menu" id="brand-menu" aria-expanded="false">◉ <strong>ShivanyaOS</strong></button>
+          <button data-top-menu="file">File</button><button data-top-menu="view">View</button><button data-top-menu="navigate">Navigate</button><button data-top-menu="help">Help</button>
         </div>
         <div class="current-process"><span class="status-dot"></span>Current process: Building systems that explain themselves</div>
         <div class="menu-right"><span>Purdue</span><span class="availability">Available for 2027 opportunities</span><strong id="clock"></strong></div>
         <div class="system-menu popover" id="system-menu" hidden>
           <button data-menu="about"><span>About This Shivanya</span><kbd>⌘ A</kbd></button>
-          <button data-menu="activity"><span>System Information</span></button>
-          <a href="../../public/Shivanya_Resume.pdf" download>Download Resume <span>↧</span></a>
+          <button data-menu="start"><span>Recruiter fast path</span></button>
+          <button data-menu="activity"><span>Active processes</span></button>
+          <a href="../../public/Shivanya_Resume.pdf" download>Download résumé <span>↧</span></a>
           <div class="menu-separator"></div>
           <button id="restart"><span>Restart Portfolio</span></button>
         </div>
+        <div class="top-menu popover" id="top-menu" hidden></div>
       </header>
 
       <section class="desktop" aria-label="ShivanyaOS desktop">
@@ -67,21 +50,25 @@
           <span class="wall-caption">systems → signals → understanding</span>
         </div>
         <div class="desktop-icons">
+          <button class="desktop-icon" data-open="start"><span class="desktop-icon-art blue">↗</span><span>Start Here</span></button>
           <button class="desktop-icon" data-open="finder"><span class="desktop-icon-art lavender">⌁</span><span>Projects</span></button>
           <button class="desktop-icon" data-open="research"><span class="desktop-icon-art mint">∿</span><span>Research Lab</span></button>
-          <button class="desktop-icon" data-open="archive"><span class="desktop-icon-art yellow">⌂</span><span>Archive</span></button>
-          <button class="desktop-icon" data-open="resume"><span class="desktop-icon-art coral">PDF</span><span>Shivanya_SWE.pdf</span></button>
+          <button class="desktop-icon" data-open="human"><span class="desktop-icon-art coral">✦</span><span>Human Stuff</span></button>
+          <button class="desktop-icon" data-open="resume"><span class="desktop-icon-art yellow">PDF</span><span>Shivanya_Resume.pdf</span></button>
         </div>
         <div class="windows-layer" id="windows"></div>
         <nav class="dock" aria-label="Applications">
           <button class="dock-item" data-open="about" data-tooltip="About This Shivanya"><span class="app-icon icon-about">SC</span></button>
+          <button class="dock-item" data-open="start" data-tooltip="Start Here"><span class="app-icon icon-start">↗</span></button>
           <button class="dock-item" data-open="finder" data-tooltip="Finder"><span class="app-icon icon-finder">⌁</span></button>
           <button class="dock-item" data-open="activity" data-tooltip="Activity Monitor"><span class="app-icon icon-activity">⌁</span></button>
+          <button class="dock-item" data-open="human" data-tooltip="Outside the Terminal"><span class="app-icon icon-human">✦</span></button>
           <button class="dock-item" data-open="notes" data-tooltip="Eventually, This Made Sense"><span class="app-icon icon-notes">≡</span></button>
           <button class="dock-item" data-open="terminal" data-tooltip="Terminal"><span class="app-icon icon-terminal">&gt;_</span></button>
-          <button class="dock-item" data-open="resume" data-tooltip="Shivanya_SWE.pdf"><span class="app-icon icon-resume">PDF</span></button>
+          <button class="dock-item" data-open="resume" data-tooltip="Shivanya_Resume.pdf"><span class="app-icon icon-resume">PDF</span></button>
           <button class="dock-item" data-open="mail" data-tooltip="Mail Shivanya"><span class="app-icon icon-mail">↗</span></button>
         </nav>
+        <div class="running-processes" id="running-processes" aria-live="polite" hidden></div>
       </section>
 
       <div class="palette-backdrop" id="palette" hidden>
