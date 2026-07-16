@@ -68,6 +68,12 @@ test("keeps the Cloudflare portfolio deep, human, and recruiter-friendly", async
   assert.match(javascript, /Not every prompt deserves the most expensive model/);
   assert.match(javascript, /30-second failure visibility/);
   assert.match(javascript, /RAG Reliability Evaluation/);
+  assert.match(html, /looking for climbing shoes/i);
+  assert.match(javascript, /Route the Signal/);
+  assert.match(javascript, /virtualDirectories/);
+  assert.match(javascript, /Cannot terminate the shell currently issuing the command/);
+  assert.match(javascript, /Why an operating system\?/);
+  assert.match(javascript, /runStartup\(\{ full:/);
   assert.doesNotMatch(`${html}\n${javascript}`, /résumé|resume|Shivanya_Resume/i);
 });
 

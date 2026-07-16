@@ -66,7 +66,7 @@ const projectData = {
       { title: "What I wanted to understand", body: "The goal was not merely to execute commands. I wanted to understand how a real shell coordinates parsing, process creation, file descriptors, signals, pipelines, foreground work, and background jobs without losing control of its own terminal." },
       { title: "From input to process", body: "Flex tokenizes the input and Bison builds the command structure. The shell then chooses a built-in or fork/exec path, creates each pipeline process, connects pipe ends with dup2(), applies redirection, and closes descriptors that no process should keep.", bullets: ["Multi-command pipelines", "Foreground and background jobs", "Expansion, history, and six-plus redirect modes"] },
       { title: "The debugging story", body: "The most revealing failures were interactions: a background pipeline that kept a descriptor open, a signal delivered to the shell instead of its foreground process group, or redirection that worked alone but failed across several commands. GDB, Valgrind, and the test suite made those invisible relationships concrete." },
-      { title: "What 96% means", body: "Passing more than 96% of the tests covered combinations, not isolated features: pipelines with background jobs, redirection across commands, expansion, and signal handling without leaking descriptors or processes.", takeaway: "The lesson: ownership is the real systems primitive—of descriptors, processes, terminal control, and cleanup." }
+      { title: "What 96% means", body: "Passing more than 96% of the tests covered combinations, not isolated features: pipelines with background jobs, redirection across commands, expansion, and signal handling without leaking descriptors or processes.", takeaway: "The lesson: ownership is the real systems primitive for descriptors, processes, terminal control, and cleanup." }
     ]
   },
   "rag-reliability": {
@@ -82,7 +82,7 @@ const projectData = {
     sections: [
       { title: "Hypothesis", body: "Fluent answers are not sufficient evidence of a reliable RAG system. I wanted to test whether retrieved context was relevant, whether the answer stayed faithful to it, and whether citations actually supported each claim." },
       { title: "Experiment matrix", body: "I compared chunk size and overlap, embedding models, top-k retrieval, reranking, prompt structure, and citation requirements across a controlled set of 1,200 question-answer pairs.", bullets: ["Retrieval configuration", "Optional reranking", "Prompt and citation strategy", "Automated metrics plus targeted human review"] },
-      { title: "Evaluation result", body: "Across 4,800 generated responses, the strongest configurations improved context precision from 0.61 to 0.84. That means the model received substantially more relevant evidence—not merely instructions to sound more confident—and manual QA time fell by 70%." },
+      { title: "Evaluation result", body: "Across 4,800 generated responses, the strongest configurations improved context precision from 0.61 to 0.84. That means the model received substantially more relevant evidence, not merely instructions to sound more confident. Manual QA time fell by 70%." },
       { title: "What failed", body: "Metric gains did not guarantee a useful answer. Relevant passages could still be used incorrectly, citation format could mask weak support, and unrepresentative questions could flatter a configuration.", takeaway: "Retrieval quality and answer quality are related, not interchangeable." }
     ]
   },
@@ -131,10 +131,10 @@ const projectData = {
     metrics: ["120K+ events processed", "55% less manual routing", "3.2 → 1.4 days resolution"],
     tech: ["Java", "Spring", "Kafka", "Workflow systems"],
     sections: [
-      { title: "The operations problem", body: "Invoice, claims, vendor, and compliance events arrived with different urgency, ownership, duplication risk, and audit requirements. The slow part was often not ingesting an event—it was deciding who should handle the exception next." },
+      { title: "The operations problem", body: "Invoice, claims, vendor, and compliance events arrived with different urgency, ownership, duplication risk, and audit requirements. The slow part was often not ingesting an event. It was deciding who should handle the exception next." },
       { title: "What I built", body: "The workflow validated events, detected duplicates, applied SLA and priority signals, routed cases, recorded an audit trail, and used AI-assisted resolution where it could reduce repetitive manual decisions." },
       { title: "Measured impact", body: "The platform processed more than 120,000 disclosed business events, reduced manual routing effort by 55%, and shortened the measured resolution cycle from 3.2 days to 1.4 days." },
-      { title: "Engineering takeaway", body: "Automation creates leverage when it removes a repeated decision while preserving ownership and traceability—not when it merely moves the queue.", takeaway: "This case study describes the problem and measured impact at a high level. Client data, workflow rules, and internal system details are intentionally omitted." }
+      { title: "Engineering takeaway", body: "Automation creates leverage when it removes a repeated decision while preserving ownership and traceability, not when it merely moves the queue.", takeaway: "This case study describes the problem and measured impact at a high level. Client data, workflow rules, and internal system details are intentionally omitted." }
     ]
   },
   hhs: {
@@ -144,7 +144,7 @@ const projectData = {
     kind: "experience",
     status: "Completed",
     period: "Oct 2024 – May 2026",
-    summary: "I maintained web systems supporting psychological research, participant management, and internal academic workflows—with reliability and real users in mind.",
+    summary: "I maintained web systems supporting psychological research, participant management, and internal academic workflows with reliability and real users in mind.",
     metrics: ["Thousands of students supported", "40% less manual review", "15+ hours returned", "25% lower API cost"],
     tech: ["Server-rendered web", "Production debugging", "Workflow automation", "AI evaluation"],
     sections: [
@@ -179,12 +179,13 @@ const projectData = {
     status: "In development",
     period: "Now",
     summary: "The operating system you are exploring: professional information in 30 seconds, personality and technical depth whenever curiosity wins.",
-    metrics: ["Recruiter fast path", "Keyboard navigation", "Responsive windows"],
+    metrics: ["Recruiter fast path", "Virtual shell", "Live process control", "Responsive windows"],
     tech: ["JavaScript", "Interface systems", "Accessibility", "Storytelling"],
     sections: [
+      { title: "Why an operating system?", body: "My work sits at several layers of computing. I built a Unix shell to understand commands, processes, signals, and file descriptors close to the operating system. I have also built AI systems that route requests, assist with everyday tasks, and make complicated workflows easier to complete. My observability work focuses on what happens between those layers, making internal state understandable when something succeeds, slows down, or fails.", takeaway: "An operating system is where those ideas meet: processes, permissions, tools, information, and the person using them." },
+      { title: "The interface is the story", body: "ShivanyaOS turns the portfolio itself into that connection. Each window represents a process, the terminal navigates the work, the dock tracks active applications, and the system exposes what is happening instead of hiding it." },
       { title: "The design constraint", body: "ShivanyaOS should feel specific to me without hiding project evidence, contact actions, or current work behind decorative controls." },
-      { title: "What I built", body: "A responsive desktop shell, window manager, recruiter view, project-specific case-study visuals, command palette, running-process dock, and direct professional links." },
-      { title: "What comes next", body: "Replace the illustrated human-space moments with a small camera roll of photos I explicitly choose to publish, then keep refining the visual evidence inside each case study." }
+      { title: "What I built", body: "A responsive desktop shell, window manager, recruiter view, safe virtual terminal, real process controls, project-specific case-study visuals, command palette, signal-routing game, and direct professional links." }
     ]
   }
 };
@@ -208,7 +209,7 @@ const experienceTimeline = [
 ];
 
 const titles = {
-  home: "initializing_shivanya()",
+  home: "About This Shivanya",
   about: "About This Shivanya",
   start: "Start Here · 30-second view",
   finder: "Finder",
@@ -216,17 +217,18 @@ const titles = {
   human: "Outside the Terminal",
   notes: "Eventually, This Made Sense",
   terminal: "Terminal",
+  game: "Signal.app · Route the Signal",
   mail: "Mail Shivanya"
 };
 
 const sizes = {
-  home: [760, 480], about: [900, 690], start: [960, 680], finder: [980, 680], activity: [820, 630], human: [960, 680],
-  notes: [780, 620], terminal: [720, 500], mail: [760, 620]
+  home: [720, 450], about: [900, 690], start: [960, 680], finder: [980, 680], activity: [820, 630], human: [960, 680],
+  notes: [780, 620], terminal: [760, 540], game: [720, 630], mail: [760, 620]
 };
 
 const minimizedStatus = {
   about: "still overthinking the bio", start: "fast path ready", finder: "indexing the work", activity: "monitoring reality",
-  home: "boot sequence complete", human: "away from keyboard", notes: "mental model cached", terminal: "background job", mail: "connection open",
+  home: "boot sequence complete", human: "away from keyboard", notes: "mental model cached", terminal: "background job", game: "signal paused", mail: "connection open",
   safedesk: "checking permissions",
   "nokia-observability": "watching the pipeline", routewise: "routing cheaply", "unix-shell": "background job",
   "rag-reliability": "evaluating evidence", "hazard-detection": "listening to sensors", "robotic-arm": "recalculating trajectory",
@@ -239,10 +241,20 @@ let finderSection = "Featured";
 let finderListView = false;
 let aboutTab = "About";
 let paletteSelection = 0;
+let nextPid = 101;
+let startupTimer = null;
+let gameLevel = 0;
+let gameSeconds = 45;
+let gameTimer = null;
+const shellSession = { cwd: "/", history: [], name: "", awaitingName: false };
 const windowsLayer = document.getElementById("windows");
 const toast = document.getElementById("toast");
 
 const escapeHtml = (value) => String(value).replace(/[&<>'"]/g, character => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", "'": "&#39;", '"': "&quot;" }[character]));
+
+function processMarkMarkup(className = "") {
+  return `<span class="process-mark ${className}" aria-hidden="true"><i class="mark-c"></i><i class="mark-s">S</i><b class="mark-node node-one"></b><b class="mark-node node-two"></b><em class="mark-cursor"></em></span>`;
+}
 
 function archiveProject(item) {
   return {
@@ -269,23 +281,23 @@ function projectCard(item) {
 }
 
 function homeTemplate() {
-  return `<div class="home-app"><div class="home-signal" aria-hidden="true"><svg viewBox="0 0 72 72"><path d="M57 14H31C17 14 10 20 10 29s8 14 21 14h12c10 0 17 5 17 13s-7 12-19 12H15"/><circle cx="53" cy="14" r="4"/></svg></div><p class="home-command">initializing_shivanya()</p><div class="home-boot-copy"><span>boot sequence complete</span><span>identity: Shivanya Chandra</span><span>location: Purdue University</span><span>mode: building things that (hopefully) make sense</span></div><h1>I turn messy systems into things people can understand and use.</h1><p>I’m a Computer Science + Artificial Intelligence student. Most of what I build lives behind the scenes: backend systems, practical AI tools, and software that quietly does its job well—with reliability, explainability, and real people in mind.</p><div class="home-processes"><small>current_processes:</small><span>building</span><span>researching</span><span>teaching</span><span>occasionally touching grass</span></div><div class="home-actions"><button class="primary-button" data-open="finder">View my work ↗</button><button class="secondary-button" data-open="start">30-second overview</button><button class="text-button" data-open="about">More about me</button></div></div>`;
+  return `<div class="home-app"><div class="home-lockup">${processMarkMarkup("home-signal")}<div><small>SHIVANYA CHANDRA</small><span>boot sequence complete</span></div></div><h1>Hi, I’m Shivanya.</h1><p class="home-intro">I build backend systems, practical AI tools, and software that makes complicated workflows easier to understand and use.</p><p class="home-school">Computer Science + Artificial Intelligence at Purdue.</p><div class="home-processes"><small>currently:</small><span>building</span><i>·</i><span>researching</span><i>·</i><span>teaching</span><i>·</i><span>occasionally touching grass</span></div><div class="home-actions"><button class="primary-button" data-open="finder">View my work ↗</button><button class="secondary-button" data-open="start">30-second overview</button><button class="text-button" data-project="shivanyaos">Why an OS?</button></div></div>`;
 }
 
 function aboutPanel() {
   const panels = {
-    About: `<p class="section-kicker">ABOUT</p><h2>Technical depth, practical usefulness, and a little curiosity about how people think.</h2><p>I study Computer Science and Artificial Intelligence at Purdue, with a psychology minor that keeps pulling my attention toward the human side of systems. I’m most interested in backend, AI infrastructure, observability, reliability, and developer tools.</p><div class="about-mini-grid"><span><small>NOW</small>Building SafeDesk and observability systems</span><span><small>LEARNING</small>Safer agent actions and information-flow controls</span><span><small>LOOKING FOR</small>2027 backend, AI infrastructure, or reliability roles</span></div>`,
-    "How I Think": `<p class="section-kicker">HOW I THINK</p><h2>Systems, signals, and the mental model in between.</h2><p>Observability and reliability turn invisible behavior into something a team can reason about. AI makes that need sharper: a plausible output is not the same as an explainable decision. Psychology makes me notice attention, confidence, cognitive load, and the stories users form when software gives incomplete feedback.</p><blockquote>The system’s behavior and the user’s understanding are both part of the product.</blockquote>`,
-    "Why I Build": `<p class="section-kicker">WHY I BUILD</p><h2>I like projects where technical depth becomes practical usefulness.</h2><p>I gravitate toward distributed workflows, AI decisions, process behavior, and tools that help people see what software actually did. The satisfying part is not only making something work—it is making the result reliable, inspectable, and easier for the next person to understand.</p><button class="secondary-button" data-open="finder">See the work ↗</button>`,
-    Teaching: `<p class="section-kicker">TEACHING</p><h2>An explanation is a debugging tool.</h2><p>Teaching CS 180 showed me how often a recurring bug is really a broken mental model. Helping a student trace their own reasoning—without taking the problem away from them—made me more patient, more precise, and much better at explaining technical choices.</p><button class="secondary-button" data-project="teaching">Open the teaching window ↗</button>`,
-    "Outside the Terminal": `<p class="section-kicker">OUTSIDE THE TERMINAL</p><h2>Boxing, dance, gym, travel, and ordinary Purdue life.</h2><p>I like having parts of my life where progress is physical, social, slightly chaotic, or impossible to express as a benchmark. They make the technical work better by giving me somewhere else to put my attention.</p><button class="secondary-button" data-open="human">Open Human Stuff ↗</button>`
+    About: `<div class="about-layout about-overview"><div class="about-copy"><p class="section-kicker">ABOUT</p><h2>Technical depth, practical usefulness, and curiosity about how people think.</h2><p>I study Computer Science and Artificial Intelligence at Purdue, with a psychology minor that keeps pulling my attention toward the human side of systems. I’m most interested in backend systems, AI infrastructure, observability, reliability, and developer tools.</p><div class="about-mini-grid"><span><small>INTERESTS</small>Systems that expose useful state</span><span><small>LEARNING</small>Safer agent actions and information flow</span><span><small>LOOKING FOR</small>2027 backend, AI infrastructure, or reliability roles</span></div></div><aside class="running-card"><p>CURRENTLY RUNNING</p>${[["SafeDesk","building"],["Nokia Observability","observing"],["CS 180","teaching"],["Research","evaluating"],["Climbing","loading..."]].map(item => `<div><span><i></i>${item[0]}</span><b>${item[1]}</b></div>`).join("")}</aside></div>`,
+    "How I Think": `<div class="about-layout principles-layout"><div class="about-copy"><p class="section-kicker">HOW I THINK</p><h2>Systems, signals, and the mental model in between.</h2><p>Observability turns invisible behavior into something a team can reason about. Psychology makes me notice the story a person forms when software gives incomplete feedback.</p><blockquote>The system’s behavior and the user’s understanding are both part of the product.</blockquote></div><div class="principle-cards"><article><small>01</small><strong>RELIABILITY</strong><p>Does it continue working when something goes wrong?</p></article><article><small>02</small><strong>EXPLAINABILITY</strong><p>Can someone understand what the system is doing?</p></article><article><small>03</small><strong>USEFULNESS</strong><p>Does it make a real task easier for a real person?</p></article></div></div>`,
+    "Why I Build": `<div class="about-layout build-layout"><div class="about-copy"><p class="section-kicker">WHY I BUILD</p><h2>Technical depth should become practical usefulness.</h2><p>I gravitate toward process behavior, AI decisions, distributed workflows, and tools that help people see what software actually did.</p><button class="secondary-button" data-open="finder">See the work ↗</button></div><div class="build-story"><span><small>LOW LEVEL</small><strong>Unix Shell</strong><p>understanding processes and control</p></span><i>↓</i><span><small>APPLICATIONS</small><strong>RouteWise + SafeDesk</strong><p>using AI to complete useful tasks</p></span><i>↓</i><span><small>SYSTEM SIGNALS</small><strong>Observability</strong><p>making internal behavior visible</p></span><i>↓</i><span><small>HUMAN LAYER</small><strong>Teaching</strong><p>making technical ideas understandable</p></span></div></div>`,
+    Teaching: `<div class="about-layout teaching-layout"><div class="about-copy"><p class="section-kicker">TEACHING</p><h2>An explanation is a debugging tool.</h2><p>Teaching CS 180 showed me how often a recurring bug is really a broken mental model. Helping a student trace their own reasoning without taking the problem away made me more patient, precise, and better at explaining technical choices.</p><button class="secondary-button" data-project="teaching">Open the teaching window ↗</button></div><div class="office-queue"><p>OFFICE HOURS</p>${[["NullPointerException","helping now"],["Inheritance confusion","next"],["Thread synchronization","waiting"],["“Works on my laptop”","recurring"]].map((item,index) => `<div class="${index === 0 ? "active" : ""}"><span>${item[0]}</span><b>${item[1]}</b></div>`).join("")}<footer><strong>200+</strong><span>students weekly</span><strong>100+</strong><span>submissions evaluated</span><small>Java · OOP · debugging · concurrency</small></footer></div></div>`,
+    "Outside the Terminal": `<div class="about-layout outside-layout"><div class="about-copy"><p class="section-kicker">OUTSIDE THE TERMINAL</p><h2>Not everything useful needs a metric.</h2><p>When I am not building or debugging something, I am usually boxing, dancing, climbing, working on calisthenics, or convincing myself that walking outside counts as system maintenance.</p><button class="secondary-button" data-open="human">Open Human Stuff ↗</button></div><div class="outside-grid">${[["🥊","Boxing"],["♪","Dance"],["↟","Climbing"],["◎","Gym + calisthenics"],["✈","Travel"],["P","Purdue life"]].map(item => `<span><i>${item[0]}</i><strong>${item[1]}</strong></span>`).join("")}</div></div>`
   };
   return panels[aboutTab];
 }
 
 function aboutTemplate() {
   const tabs = ["About", "How I Think", "Why I Build", "Teaching", "Outside the Terminal"];
-  return `<div class="about-app tabbed-about"><div class="about-identity"><div class="portrait-mark"><span>SC</span><i>operational</i></div><div><p class="eyebrow">SHIVANYA CHANDRA</p><h1>Systems → signals → understanding.</h1><p>Computer Science + Artificial Intelligence + Psychology at Purdue</p></div></div><nav class="about-tabs" aria-label="About sections">${tabs.map(tab => `<button data-about-tab="${tab}" class="${tab === aboutTab ? "selected" : ""}">${tab}</button>`).join("")}</nav><section class="about-panel">${aboutPanel()}</section><div class="contact-ribbon"><a href="https://github.com/shivanya-chandra" target="_blank" rel="noreferrer">GitHub ↗</a><a href="https://linkedin.com/in/shivanya-chandra" target="_blank" rel="noreferrer">LinkedIn ↗</a><a href="mailto:${EMAIL}">Email ↗</a><button data-copy-email>Copy email</button></div></div>`;
+  return `<div class="about-app tabbed-about"><div class="about-connection-map" aria-hidden="true"><span>systems</span><i></i><span>signals</span><i></i><span>understanding</span></div><div class="about-identity"><div class="portrait-mark">${processMarkMarkup("portrait-process-mark")}<i>operational</i></div><div><p class="eyebrow">SHIVANYA CHANDRA</p><h1>Systems → signals → understanding.</h1><p>Computer Science + Artificial Intelligence + Psychology at Purdue</p></div></div><nav class="about-tabs" aria-label="About sections">${tabs.map(tab => `<button data-about-tab="${tab}" class="${tab === aboutTab ? "selected" : ""}">${tab}</button>`).join("")}</nav><section class="about-panel">${aboutPanel()}</section><div class="contact-ribbon"><a href="https://github.com/shivanya-chandra" target="_blank" rel="noreferrer">GitHub ↗</a><a href="https://linkedin.com/in/shivanya-chandra" target="_blank" rel="noreferrer">LinkedIn ↗</a><a href="mailto:${EMAIL}">Email ↗</a><button data-copy-email>Copy email</button></div></div>`;
 }
 
 function startTemplate() {
@@ -293,7 +305,7 @@ function startTemplate() {
     ["01", "Experience", "Nokia observability, Genpact workflow systems, Purdue engineering, and teaching.", "experience"],
     ["02", "Featured work", "SafeDesk, Nokia observability, RouteWise, and the Custom Unix Shell.", "finder"],
     ["03", "Research", "RAG reliability, real-time hazard detection, and robotic-arm planning and control.", "research"],
-    ["04", "Contact", "GitHub, LinkedIn, and email—direct and easy to find.", "mail"]
+    ["04", "Contact", "GitHub, LinkedIn, and email, direct and easy to find.", "mail"]
   ];
   return `<div class="start-app"><header><div><p class="eyebrow">RECRUITER FAST PATH · ABOUT 30 SECONDS</p><h1>The useful version,<br>before the side quests.</h1><p>Backend and AI systems engineer focused on observability, reliability, developer tools, and explanations people can actually use.</p></div><div class="start-status"><span>AVAILABLE</span><strong>2027 opportunities</strong><small>West Lafayette · open to relocation</small></div></header>
     <section class="start-snapshot"><article><small>BUILDING</small><strong>SafeDesk</strong><span>Permission model in progress</span></article><article><small>CURRENT</small><strong>Nokia observability</strong><span>Running</span></article><article><small>FEATURED</small><strong>RouteWise</strong><span>52% lower inference cost</span></article><article><small>TEACHING</small><strong>CS 18000</strong><span>200+ students weekly</span></article></section>
@@ -343,21 +355,21 @@ function activityTemplate() {
   ];
   return `<div class="activity-app"><header class="app-header"><div><p class="eyebrow">SOURCE OF TRUTH · NOT EMOTIONALLY CALIBRATED</p><h2>Active processes</h2><p>Current, recently completed, research, and archived work in one view.</p></div><div class="live-pill"><span></span>updated July 2026</div></header>
     <div class="process-table modern-process"><div class="process-head"><span>PROCESS</span><span>STATE</span><span>OPEN</span></div>${processes.map(process => `<button ${process[2] ? `data-project="${process[2]}"` : "disabled"}><span><i class="${process[3]}"></i>${process[0]}</span><b>${process[1]}</b><em>${process[2] ? "View ↗" : "Finder / Archive"}</em></button>`).join("")}</div>
-    <div class="activity-lower"><section><p class="section-kicker">WHAT IS ACTUALLY MOVING</p><div class="process-note"><strong>SafeDesk</strong><p>Permission-aware actions, verification, rollback, and safe recovery for a controlled desktop agent.</p></div><div class="process-note"><strong>Nokia</strong><p>Shared lifecycle instrumentation, failure visibility, and vendor-independent telemetry representation.</p></div></section><section class="touching-grass"><p class="section-kicker">OUTSIDE-WORK PROCESSES</p><div><span>boxing.service</span><b>Active</b></div><div><span>dance.service</span><b>Recurring</b></div><div><span>gym.service</span><b>Persistent</b></div><button data-open="human">Open human stuff ↗</button></section></div></div>`;
+    <div class="activity-lower"><section><p class="section-kicker">WHAT IS ACTUALLY MOVING</p><div class="process-note"><strong>SafeDesk</strong><p>Permission-aware actions, verification, rollback, and safe recovery for a controlled desktop agent.</p></div><div class="process-note"><strong>Nokia</strong><p>Shared lifecycle instrumentation, failure visibility, and vendor-independent telemetry representation.</p></div></section><section class="touching-grass"><p class="section-kicker">OUTSIDE-WORK PROCESSES</p><div><span>boxing.service</span><b>Active</b></div><div><span>dance.service</span><b>Recurring</b></div><div><span>climbing.service</span><b>Loading...</b></div><div><span>calisthenics.service</span><b>Persistent</b></div><button data-open="human">Open human stuff ↗</button></section></div></div>`;
 }
 
 function humanTemplate() {
   const moments = [
-    ["boxing", "🥊", "Boxing", "The fastest way to stop thinking about a bug."],
-    ["dance", "♪", "Dance", "Counts, music, and occasionally remembering the choreography."],
-    ["gym", "↟", "Gym", "Progress measured in very small plates."],
+    ["boxing", "🥊", "Boxing", "No tabs open. Just the next round."],
+    ["dance", "♪", "Dance", "Counts, music, and remembering the choreography."],
+    ["climbing", "↟", "Climbing", "Finding the route one hold at a time."],
+    ["gym", "◎", "Gym + calisthenics", "Progress measured in patient repetitions."],
     ["travel", "✈", "Travel", "Collecting windows, streets, and better snacks."],
-    ["purdue", "P", "Purdue", "Boilermaker life between labs and late walks."],
-    ["events", "✦", "Events", "Showing up for the side quests."],
-    ["ordinary", "☕", "Ordinary days", "Coffee, friends, and no production incident."],
+    ["purdue", "P", "Purdue life", "Labs, friends, events, and late walks."],
+    ["ordinary", "☕", "Ordinary days", "Coffee, people I like, and no production incident."],
     ["camera-roll", "∞", "Camera roll", "The unpolished bits are usually the good bits."]
   ];
-  return `<div class="human-app"><header><div><p class="eyebrow">AFK, OCCASIONALLY</p><h1>Outside the Terminal</h1><p>When I’m not debugging something, I’m usually boxing, dancing, at the gym, exploring somewhere new, or collecting ordinary moments with people I like.</p></div><div class="human-stamp">HUMAN<br><strong>STUFF</strong><span>probably dancing</span></div></header>
+  return `<div class="human-app"><header><div><p class="eyebrow">AFK, OCCASIONALLY</p><h1>Outside the Terminal</h1><p>When I am not building or debugging something, I am usually boxing, dancing, climbing, working on calisthenics, or convincing myself that walking outside counts as system maintenance.</p></div><div class="human-stamp">HUMAN<br><strong>STUFF</strong><span>probably climbing</span></div></header>
     <section class="camera-roll">${moments.map((moment, index) => `<figure class="moment-card moment-${index + 1}"><div class="moment-image"><img src="./human/${moment[0]}.jpg" alt="" data-human-photo><span class="moment-fallback">${moment[1]}</span></div><figcaption><strong>${moment[2]}</strong><span>${moment[3]}</span></figcaption></figure>`).join("")}</section>
     <footer><span>Illustrated field notes for now.</span><p>The camera-roll slots are ready for photos I explicitly choose to publish; no stock or fabricated personal images.</p></footer></div>`;
 }
@@ -377,7 +389,29 @@ function notesTemplate() {
 }
 
 function terminalTemplate() {
-  return `<div class="terminal-app"><div class="terminal-top"><span>shivanya@portfolio</span><span>safe terminal · 80×24</span></div><div class="terminal-output" id="terminal-output"><p>ShivanyaOS Terminal · type ‘help’ to begin.</p></div><form id="terminal-form"><label for="terminal-command">shivanya@ShivanyaOS ~ %</label><input id="terminal-command" autocomplete="off" spellcheck="false"></form></div>`;
+  return `<div class="terminal-app"><div class="terminal-top"><span>ShivanyaOS virtual shell</span><span>safe commands only · connected to desktop</span></div><div class="terminal-output" id="terminal-output"><p class="terminal-system">ShivanyaOS Terminal · type ‘hello’ or ‘help’ to begin.</p></div><form id="terminal-form"><label for="terminal-command" data-terminal-prompt>guest@shivanyaos:/$</label><input id="terminal-command" aria-label="Terminal command" autocomplete="off" autocapitalize="off" spellcheck="false"></form></div>`;
+}
+
+const gameLevels = [
+  { columns: 3, seconds: 35, tiles: [
+    { type: "end", rotation: 0, role: "source", locked: true }, { type: "straight", rotation: 0 }, { type: "corner", rotation: 90 },
+    null, null, { type: "straight", rotation: 90 }, null, null, { type: "end", rotation: 270, role: "target", locked: true }
+  ] },
+  { columns: 4, seconds: 40, tiles: [
+    { type: "end", rotation: 0, role: "source", locked: true }, { type: "straight", rotation: 0 }, { type: "corner", rotation: 90 }, null,
+    null, null, { type: "straight", rotation: 90 }, null,
+    null, null, { type: "corner", rotation: 90 }, { type: "end", rotation: 180, role: "target", locked: true }
+  ] },
+  { columns: 4, seconds: 45, tiles: [
+    { type: "end", rotation: 90, role: "source", locked: true }, null, null, null,
+    { type: "straight", rotation: 90 }, null, { type: "corner", rotation: 180 }, { type: "corner", rotation: 90 },
+    { type: "corner", rotation: 90 }, { type: "straight", rotation: 0 }, { type: "corner", rotation: 90 }, { type: "straight", rotation: 90 },
+    null, null, null, { type: "end", rotation: 270, role: "target", locked: true }
+  ] }
+];
+
+function gameTemplate() {
+  return `<div class="signal-game"><header><div><p class="eyebrow">SIGNAL.APP</p><h1>Route the Signal</h1><span>Rotate the circuit tiles until the source reaches its destination.</span></div><div class="game-readout"><small>LEVEL</small><strong id="game-level">${gameLevel + 1}/3</strong><small>TIME</small><strong id="game-time">${gameSeconds}s</strong></div></header><div class="game-board-wrap"><div class="game-endpoint source-label">● SOURCE</div><div class="signal-board" id="signal-board" aria-label="Signal routing puzzle"></div><div class="game-endpoint target-label">◎ DESTINATION</div></div><div class="game-status" id="game-status" aria-live="polite">Select a tile to rotate it clockwise.</div><footer><span>Click, tap, or focus a tile and use an arrow key.</span><button class="secondary-button" data-game-reset>Reset level</button></footer></div>`;
 }
 
 function mailTemplate() {
@@ -395,7 +429,8 @@ function visualForProject(slug) {
   if (slug === "genpact") return `<div class="case-visual workflow-center"><div class="workflow-line">${["Business event", "Validate + dedupe", "SLA + priority", "Route or assist", "Audit trail"].map((step, index) => `<span><i>${index + 1}</i>${step}${index < 4 ? "<b>→</b>" : ""}</span>`).join("")}</div><small>Public-safe workflow view · client rules omitted</small></div>`;
   if (slug === "hhs") return `<div class="case-visual research-status"><header><div><p>RESEARCH SYSTEM STATUS</p><strong>ACCESS LEVEL: PUBLIC SUMMARY</strong></div><span>Protected</span></header><div><span>Participant portal</span><b>Healthy</b></div><div><span>Workflow automation</span><b>Running</b></div><div><span>Manual review load</span><b>↓ 40%</b></div><div><span>Hours returned to staff</span><b>15+</b></div><div><span>API operating cost</span><b>↓ 25%</b></div><footer>Sensitive research and participant data hidden.</footer></div>`;
   if (slug === "teaching") return `<div class="case-visual office-hours"><div class="student-queue"><p>STUDENT QUEUE</p>${[["null","NullPointerException","Helping now"],["inheritance","Inheritance confusion","Next"],["threads","Thread synchronization","Waiting"],["laptop","“Works on my laptop”","Recurring"]].map((item,index) => `<button data-teaching-issue="${item[0]}" class="${index===0?"selected":""}"><span>${item[1]}</span><b>${item[2]}</b></button>`).join("")}</div><div class="teaching-principle"><p>TEACHING PRINCIPLE</p><strong id="teaching-principle">Trace the object, not just the line.</strong><small>Ask one smaller question, then let the student own the next step.</small></div></div>`;
-  return `<div class="case-visual default-visual"><span>${slug === "shivanyaos" ? "SC" : "↗"}</span><div><strong>System view</strong><small>Problem → contribution → result → reflection</small></div></div>`;
+  if (slug === "shivanyaos") return `<div class="case-visual os-layer-story"><div class="os-layer low"><small>LOW LEVEL</small><strong>Unix Shell</strong><span>processes · signals · file descriptors</span></div><i>↓</i><div class="os-layer system"><small>SYSTEM LAYER</small><strong>Observability</strong><span>stages · status · health · failures</span></div><i>↓</i><div class="os-layer application"><small>APPLICATION LAYER</small><strong>RouteWise · SafeDesk</strong><span>AI routing · task completion · permissions</span></div><i>↓</i><div class="os-layer human"><small>HUMAN LAYER</small><strong>Teaching · psychology</strong><span>explanations · usable software</span></div></div>`;
+  return `<div class="case-visual default-visual"><span>↗</span><div><strong>System view</strong><small>Problem → contribution → result → reflection</small></div></div>`;
 }
 
 function sectionMarkup(project, index) {
@@ -420,6 +455,7 @@ function templateFor(app) {
   if (app === "human") return humanTemplate();
   if (app === "notes") return notesTemplate();
   if (app === "terminal") return terminalTemplate();
+  if (app === "game") return gameTemplate();
   return mailTemplate();
 }
 
@@ -463,15 +499,18 @@ function openWindow(app, options = {}) {
   el.className = "os-window preview-window active";
   el.dataset.app = app;
   el.dataset.statusKey = options.slug || app;
+  el.dataset.pid = String(nextPid++);
+  if (app === "home") el.classList.add("fixed-medium");
   el.style.left = `${Math.max(20, (innerWidth - size[0]) / 2 + offset)}px`;
   el.style.top = `${Math.max(48, (innerHeight - size[1]) / 2 - 5 + offset)}px`;
   el.style.width = `${size[0]}px`;
   el.style.height = `${size[1]}px`;
   el.style.zIndex = ++z;
-  el.innerHTML = `<div class="title-bar"><div class="traffic-lights"><button class="close" aria-label="Close ${escapeHtml(options.title || titles[app] || "window")}" data-tooltip="Close this thought"></button><button class="minimize" aria-label="Minimize ${escapeHtml(options.title || titles[app] || "window")}" data-tooltip="Send to background"></button><button class="maximize" aria-label="Maximize ${escapeHtml(options.title || titles[app] || "window")}" data-tooltip="Give it the whole screen"></button></div><strong>${escapeHtml(options.title || titles[app])}</strong><span class="title-status">active</span></div><div class="window-body">${options.html || templateFor(app)}</div>`;
+  el.innerHTML = `<div class="title-bar"><div class="traffic-lights"><button class="close" aria-label="Close ${escapeHtml(options.title || titles[app] || "window")}" data-tooltip="Close this thought"></button><button class="minimize" aria-label="Minimize ${escapeHtml(options.title || titles[app] || "window")}" data-tooltip="Send to background"></button><button class="maximize" aria-label="Maximize ${escapeHtml(options.title || titles[app] || "window")}" data-tooltip="Give it the whole screen" ${app === "home" ? "disabled" : ""}></button></div><strong>${escapeHtml(options.title || titles[app])}</strong><span class="title-status">PID ${el.dataset.pid}</span></div><div class="window-body">${options.html || templateFor(app)}</div>`;
   windowsLayer.appendChild(el);
   attachWindow(el);
   attachContent(el);
+  if (app === "game") startGame(el, true);
   focusWindow(el);
   updateDock();
   updateRunningProcesses();
@@ -490,11 +529,12 @@ function focusWindow(el) {
   el.classList.add("active");
   el.style.zIndex = ++z;
   const status = el.querySelector(".title-status");
-  if (status) status.textContent = "active";
+  if (status) status.textContent = `PID ${el.dataset.pid} · active`;
   activeWindow = el;
 }
 
 function closeWindow(el) {
+  if (el.dataset.app === "game") window.clearInterval(gameTimer);
   el.remove();
   if (activeWindow === el) activeWindow = null;
   history.replaceState(null, "", "#/");
@@ -541,11 +581,16 @@ function attachWindow(el) {
     el.style.top = `${Math.max(40, drag.top + event.clientY - drag.y)}px`;
   });
   bar.addEventListener("pointerup", () => { drag = null; });
-  bar.addEventListener("dblclick", () => el.classList.toggle("maximized"));
+  bar.addEventListener("dblclick", () => toggleMaximized(el));
   el.addEventListener("pointerdown", () => focusWindow(el));
   el.querySelector(".close").addEventListener("click", event => { event.stopPropagation(); closeWindow(el); });
   el.querySelector(".minimize").addEventListener("click", event => { event.stopPropagation(); minimizeWindow(el); });
-  el.querySelector(".maximize").addEventListener("click", event => { event.stopPropagation(); el.classList.toggle("maximized"); });
+  el.querySelector(".maximize").addEventListener("click", event => { event.stopPropagation(); toggleMaximized(el); });
+}
+
+function toggleMaximized(el) {
+  if (!el || el.classList.contains("fixed-medium")) return;
+  el.classList.toggle("maximized");
 }
 
 function attachContent(el) {
@@ -597,7 +642,8 @@ function attachContent(el) {
   const pid = el.querySelector("#pid-toggle");
   if (pid) pid.addEventListener("change", () => updatePidDemo(pid, el));
   const terminal = el.querySelector("#terminal-form");
-  if (terminal) terminal.addEventListener("submit", runTerminal);
+  if (terminal) { terminal.addEventListener("submit", runTerminal); updateTerminalPrompt(terminal); }
+  el.querySelectorAll("[data-game-reset]").forEach(button => button.addEventListener("click", () => startGame(el, false)));
   const mail = el.querySelector("#mail-form");
   if (mail) mail.addEventListener("submit", sendMail);
   el.querySelectorAll("[data-human-photo]").forEach(image => {
@@ -682,31 +728,312 @@ function updatePidDemo(input, el) {
   el.querySelector("#pid-status").textContent = input.checked ? "Stable approach · reduced oscillation" : "Illustrative oscillation · correction needed";
 }
 
+const directionOrder = ["N", "E", "S", "W"];
+
+function tileConnections(type, rotation) {
+  const base = type === "straight" ? ["N", "S"] : type === "corner" ? ["N", "E"] : ["E"];
+  const turns = ((rotation % 360) + 360) % 360 / 90;
+  return base.map(direction => directionOrder[(directionOrder.indexOf(direction) + turns) % 4]);
+}
+
+function tileGlyph(type, rotation) {
+  const connections = tileConnections(type, rotation).sort().join("");
+  const glyphs = { NS: "│", EW: "─", EN: "└", ES: "┌", SW: "┐", NW: "┘", E: "╴", S: "╷", W: "╶", N: "╵" };
+  return glyphs[connections] || "·";
+}
+
+function renderGameBoard(el) {
+  const level = gameLevels[gameLevel];
+  const board = el.querySelector("#signal-board");
+  if (!board) return;
+  board.style.setProperty("--game-columns", level.columns);
+  board.innerHTML = level.tiles.map((tile, index) => tile ? `<button class="signal-tile ${tile.role || ""}" data-game-tile="${index}" data-type="${tile.type}" data-rotation="${tile.rotation}" ${tile.locked ? "disabled" : ""} aria-label="${tile.role ? `${tile.role} tile` : `Rotate circuit tile ${index + 1}`}" title="${tile.role || "Rotate tile"}"><span>${tileGlyph(tile.type, tile.rotation)}</span>${tile.role ? `<small>${tile.role === "source" ? "●" : "◎"}</small>` : ""}</button>` : `<span class="signal-empty" aria-hidden="true"></span>`).join("");
+  board.querySelectorAll("[data-game-tile]:not(:disabled)").forEach(button => {
+    const rotate = amount => {
+      const rotation = (Number(button.dataset.rotation) + amount + 360) % 360;
+      button.dataset.rotation = String(rotation);
+      button.querySelector("span").textContent = tileGlyph(button.dataset.type, rotation);
+      button.classList.add("just-rotated");
+      window.setTimeout(() => button.classList.remove("just-rotated"), 180);
+      checkSignalRoute(el);
+    };
+    button.addEventListener("click", () => rotate(90));
+    button.addEventListener("keydown", event => {
+      if (!["ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown"].includes(event.key)) return;
+      event.preventDefault();
+      rotate(event.key === "ArrowLeft" ? -90 : 90);
+    });
+  });
+}
+
+function checkSignalRoute(el) {
+  const board = el.querySelector("#signal-board");
+  if (!board) return;
+  const level = gameLevels[gameLevel];
+  const tiles = [...board.children];
+  const source = tiles.findIndex(tile => tile.classList.contains("source"));
+  const target = tiles.findIndex(tile => tile.classList.contains("target"));
+  const visited = new Set([source]);
+  const queue = [source];
+  const offsets = { N: -level.columns, E: 1, S: level.columns, W: -1 };
+  const opposite = { N: "S", E: "W", S: "N", W: "E" };
+  while (queue.length) {
+    const index = queue.shift();
+    const tile = tiles[index];
+    if (!tile?.dataset.type) continue;
+    tileConnections(tile.dataset.type, Number(tile.dataset.rotation)).forEach(direction => {
+      const neighborIndex = index + offsets[direction];
+      if (neighborIndex < 0 || neighborIndex >= tiles.length) return;
+      if (direction === "E" && Math.floor(index / level.columns) !== Math.floor(neighborIndex / level.columns)) return;
+      if (direction === "W" && Math.floor(index / level.columns) !== Math.floor(neighborIndex / level.columns)) return;
+      const neighbor = tiles[neighborIndex];
+      if (!neighbor?.dataset.type || !tileConnections(neighbor.dataset.type, Number(neighbor.dataset.rotation)).includes(opposite[direction])) return;
+      if (!visited.has(neighborIndex)) { visited.add(neighborIndex); queue.push(neighborIndex); }
+    });
+  }
+  tiles.forEach((tile, index) => tile.classList.toggle("signal-live", visited.has(index)));
+  if (!visited.has(target)) return;
+  window.clearInterval(gameTimer);
+  const status = el.querySelector("#game-status");
+  if (gameLevel === gameLevels.length - 1) {
+    status.innerHTML = `<strong>Signal delivered.</strong> No packets were emotionally harmed.`;
+    el.classList.add("game-complete");
+    const reset = el.querySelector("[data-game-reset]");
+    if (reset) reset.textContent = "Play again";
+    return;
+  }
+  status.textContent = `Level ${gameLevel + 1} delivered. Opening the next route…`;
+  window.setTimeout(() => {
+    if (!el.isConnected) return;
+    gameLevel += 1;
+    startGame(el, false);
+  }, 700);
+}
+
+function startGame(el, restartAll = false) {
+  window.clearInterval(gameTimer);
+  if (restartAll || gameLevel >= gameLevels.length) gameLevel = 0;
+  el.classList.remove("game-complete");
+  gameSeconds = gameLevels[gameLevel].seconds;
+  const levelLabel = el.querySelector("#game-level");
+  const timeLabel = el.querySelector("#game-time");
+  const status = el.querySelector("#game-status");
+  const reset = el.querySelector("[data-game-reset]");
+  if (levelLabel) levelLabel.textContent = `${gameLevel + 1}/3`;
+  if (timeLabel) timeLabel.textContent = `${gameSeconds}s`;
+  if (status) status.textContent = "Select a tile to rotate it clockwise.";
+  if (reset) reset.textContent = "Reset level";
+  renderGameBoard(el);
+  gameTimer = window.setInterval(() => {
+    gameSeconds -= 1;
+    if (timeLabel) timeLabel.textContent = `${Math.max(0, gameSeconds)}s`;
+    if (gameSeconds > 0) return;
+    window.clearInterval(gameTimer);
+    if (status) status.textContent = "Signal timed out. Resetting this route…";
+    window.setTimeout(() => { if (el.isConnected) startGame(el, false); }, 700);
+  }, 1000);
+}
+
+const virtualDirectories = new Set(["/", "/about", "/work", "/research", "/experience", "/human", "/archive", "/games", "/contact"]);
+const virtualFiles = {
+  "/about/README": "Hi. I’m Shivanya. I build backend systems, practical AI tools, and software that makes complicated workflows easier to understand and use.",
+  "/about/how-i-think": "Reliability. Explainability. Usefulness. The system and the user’s mental model are both part of the product.",
+  "/about/why-an-os": "The shell, AI applications, observability, and human-centered software meet inside one interface that exposes its own processes.",
+  "/work/safedesk": "Controlled desktop AI with permission-aware actions, verification, rollback, and isolated execution.",
+  "/work/nokia": "A shared observability framework for lifecycle state, health, timestamps, and failure context across AI pipelines.",
+  "/work/routewise": "Cost-aware LLM routing with semantic caching, prompt compression, quality checks, and fallback.",
+  "/work/unix-shell": "A Unix-style shell built with Flex, Bison, and POSIX APIs to understand parsing, processes, file descriptors, signals, and job control.",
+  "/research/rag-evaluation": "4,800 responses evaluated across retrieval precision, faithfulness, citation reliability, and hallucination.",
+  "/research/iot-hazard-detection": "Reliability-aware hazard detection with under two seconds p95 latency and fewer false alerts.",
+  "/research/robotics": "RRT*, inverse kinematics, and PID control connected into a pick-and-place planning pipeline.",
+  "/experience/genpact": "Workflow systems for high-volume events, SLA-aware routing, duplicate detection, and auditability.",
+  "/experience/health-and-human-sciences": "Production web systems and workflow automation supporting psychological research at Purdue.",
+  "/experience/teaching": "CS 180 teaching: Java, object-oriented design, debugging, testing, concurrency, and larger software projects.",
+  "/human/boxing": "A very effective way to stop thinking about a bug.",
+  "/human/dance": "Counts, music, and occasionally remembering the choreography.",
+  "/human/climbing": "Finding the route one hold at a time.",
+  "/human/photos": "Camera-roll slots reserved for real photos Shivanya explicitly chooses to publish.",
+  "/games/signal-path": "A three-level tile puzzle. Rotate the circuit until the signal reaches its destination.",
+  "/contact/README": `${EMAIL} · github.com/shivanya-chandra · linkedin.com/in/shivanya-chandra`
+};
+
+function normalizeVirtualPath(value = ".") {
+  const start = value.startsWith("/") ? value : `${shellSession.cwd}/${value}`;
+  const parts = [];
+  start.split("/").forEach(part => {
+    if (!part || part === ".") return;
+    if (part === "..") parts.pop();
+    else parts.push(part);
+  });
+  return `/${parts.join("/")}` || "/";
+}
+
+function virtualEntries(path) {
+  const prefix = path === "/" ? "/" : `${path}/`;
+  const names = new Set();
+  [...virtualDirectories, ...Object.keys(virtualFiles)].forEach(candidate => {
+    if (candidate === path || !candidate.startsWith(prefix)) return;
+    const rest = candidate.slice(prefix.length);
+    if (rest && !rest.includes("/")) names.add(rest);
+  });
+  return [...names].sort((a, b) => a.localeCompare(b));
+}
+
+function virtualTree(path = "/", prefix = "") {
+  const entries = virtualEntries(path);
+  const lines = [];
+  entries.forEach((name, index) => {
+    const child = normalizeVirtualPath(`${path}/${name}`);
+    const last = index === entries.length - 1;
+    const directory = virtualDirectories.has(child);
+    lines.push(`${prefix}${last ? "└──" : "├──"} ${name}${directory ? "/" : ""}`);
+    if (directory) lines.push(...virtualTree(child, `${prefix}${last ? "    " : "│   "}`));
+  });
+  return lines;
+}
+
+function openVirtualTarget(rawTarget) {
+  const aliases = {
+    about: "/about", work: "/work", projects: "/work", current: "/work", research: "/research", experience: "/experience", human: "/human", archive: "/archive", contact: "/contact",
+    safedesk: "/work/safedesk", nokia: "/work/nokia", routewise: "/work/routewise", "unix-shell": "/work/unix-shell", shell: "/work/unix-shell",
+    teaching: "/experience/teaching", hhs: "/experience/health-and-human-sciences", genpact: "/experience/genpact", "signal-path": "/games/signal-path", game: "/games/signal-path"
+  };
+  const path = rawTarget.includes("/") || rawTarget.startsWith(".") ? normalizeVirtualPath(rawTarget) : (aliases[rawTarget.toLowerCase()] || normalizeVirtualPath(rawTarget));
+  const actions = {
+    "/about": () => openWindow("about"), "/about/README": () => openWindow("about"),
+    "/about/how-i-think": () => { aboutTab = "How I Think"; openWindow("about"); const el = document.getElementById("window-about"); if (el) { el.querySelector(".window-body").innerHTML = aboutTemplate(); attachContent(el); } },
+    "/about/why-an-os": () => openProject("shivanyaos"),
+    "/work": () => { finderSection = "Featured"; openWindow("finder"); rerenderFinder(); },
+    "/work/safedesk": () => openProject("safedesk"), "/work/nokia": () => openProject("nokia-observability"), "/work/routewise": () => openProject("routewise"), "/work/unix-shell": () => openProject("unix-shell"),
+    "/research": () => openByName("research"), "/research/rag-evaluation": () => openProject("rag-reliability"), "/research/iot-hazard-detection": () => openProject("hazard-detection"), "/research/robotics": () => openProject("robotic-arm"),
+    "/experience": () => openByName("experience"), "/experience/genpact": () => openProject("genpact"), "/experience/health-and-human-sciences": () => openProject("hhs"), "/experience/teaching": () => openProject("teaching"),
+    "/human": () => openWindow("human"), "/human/boxing": () => openWindow("human"), "/human/dance": () => openWindow("human"), "/human/climbing": () => openWindow("human"), "/human/photos": () => openWindow("human"),
+    "/archive": () => openByName("archive"), "/games": () => openWindow("game"), "/games/signal-path": () => openWindow("game"), "/contact": () => openWindow("mail"), "/contact/README": () => openWindow("mail")
+  };
+  if (!actions[path]) return `open: ${rawTarget}: no application is associated with that path`;
+  actions[path]();
+  return path === "/games/signal-path" ? "Launching Route the Signal..." : `Opening ${path}...`;
+}
+
+function terminalProcessList() {
+  const rows = [...document.querySelectorAll(".preview-window")].map(windowElement => {
+    const process = windowElement.dataset.statusKey || windowElement.dataset.app;
+    const state = windowElement.classList.contains("hidden") ? "minimized" : windowElement.classList.contains("active") ? "active" : "running";
+    return `${windowElement.dataset.pid.padEnd(5)} ${process.padEnd(22)} ${state}`;
+  });
+  return `PID   PROCESS                STATE\n${rows.join("\n") || "(no processes)"}`;
+}
+
+function executeTerminalCommand(command, terminalWindow) {
+  const tokens = command.match(/(?:[^\s"]+|"[^"]*")+/g)?.map(token => token.replace(/^"|"$/g, "")) || [];
+  const name = (tokens.shift() || "").toLowerCase();
+  const argument = tokens.join(" ");
+  if (name === "help") return "COMMANDS\nhelp  hello  whoami  ls  cd  pwd  tree  cat  open\nps    kill   clear   history  echo  date  man\n\nTry: ls · cd work · cat safedesk · open safedesk · ps";
+  if (name === "hello") {
+    if (shellSession.name) return `Hi again, ${shellSession.name}. The shell remembers you only until this session ends.`;
+    shellSession.awaitingName = true;
+    return "Hi. I’m Shivanya.\nWhat should I call you?";
+  }
+  if (name === "whoami") return `${shellSession.name || "guest"}: visitor to ShivanyaOS\nhost: Shivanya Chandra · systems builder · AI student · teacher · boxer · dancer · climber`;
+  if (name === "pwd") return shellSession.cwd;
+  if (name === "ls") {
+    const path = normalizeVirtualPath(argument || ".");
+    if (!virtualDirectories.has(path)) return virtualFiles[path] ? path.split("/").pop() : `ls: ${argument || path}: directory not found`;
+    return virtualEntries(path).join("  ") || "(empty directory)";
+  }
+  if (name === "cd") {
+    const path = normalizeVirtualPath(argument || "/");
+    if (!virtualDirectories.has(path)) return argument === "sleep" ? "directory not found\nsleep is currently not installed" : `cd: ${argument || path}: directory not found`;
+    shellSession.cwd = path;
+    return shellSession.cwd;
+  }
+  if (name === "tree") {
+    const path = normalizeVirtualPath(argument || ".");
+    if (!virtualDirectories.has(path)) return `tree: ${argument || path}: directory not found`;
+    return `${path}\n${virtualTree(path).join("\n")}`;
+  }
+  if (name === "cat") {
+    if (!argument) return "cat: choose a file";
+    const path = normalizeVirtualPath(argument);
+    if (virtualDirectories.has(path)) return `cat: ${argument}: is a directory`;
+    return virtualFiles[path] || `cat: ${argument}: file not found`;
+  }
+  if (name === "open") return argument ? openVirtualTarget(argument) : "open: choose a portfolio path";
+  if (name === "ps") return terminalProcessList();
+  if (name === "kill") {
+    const flag = tokens.find(token => token.startsWith("-")) || "";
+    const pid = tokens.find(token => /^\d+$/.test(token));
+    if (!pid) return "kill: provide a PID from ps";
+    const target = document.querySelector(`.preview-window[data-pid="${pid}"]`);
+    if (!target) return `kill: ${pid}: no such process`;
+    if (target === terminalWindow) return "Cannot terminate the shell currently issuing the command.\nNice try.";
+    const processName = target.dataset.statusKey || target.dataset.app;
+    if (flag.toUpperCase() === "-STOP") { minimizeWindow(target); return `${processName} stopped and minimized`; }
+    if (flag.toUpperCase() === "-CONT") { focusWindow(target); updateDock(); updateRunningProcesses(); return `${processName} continued`; }
+    closeWindow(target);
+    return flag === "-9" && processName === "about" ? "about terminated.\nShivanya remains operational." : `${processName} closed`;
+  }
+  if (name === "clear") return { clear: true };
+  if (name === "history") return shellSession.history.map((item, index) => `${String(index + 1).padStart(3)}  ${item}`).join("\n");
+  if (name === "echo") return argument;
+  if (name === "date") return new Date().toString();
+  if (name === "man") {
+    const manuals = {
+      open: "open PATH\nLaunches the ShivanyaOS window associated with a virtual path.",
+      kill: "kill [-STOP|-CONT|-9] PID\nCloses, minimizes, restores, or force-closes a desktop window. The current shell is protected.",
+      ls: "ls [PATH]\nLists folders and files in the virtual portfolio filesystem.",
+      cat: "cat FILE\nPrints the public summary stored in a virtual file.",
+      ps: "ps\nShows the real windows currently managed by ShivanyaOS."
+    };
+    return manuals[argument] || `No manual entry for ${argument || "nothing"}. Try man open, man kill, man ls, man cat, or man ps.`;
+  }
+  if (name === "sudo") return "You already have enough access.";
+  if (name === "rm" && argument === "-rf /") return "That would make the portfolio significantly less useful.";
+  return `${name || command}: command not found\nType help to see supported commands.`;
+}
+
+function updateTerminalPrompt(form) {
+  const prompt = form.querySelector("[data-terminal-prompt]");
+  if (prompt) prompt.textContent = `${shellSession.name || "guest"}@shivanyaos:${shellSession.cwd}$`;
+}
+
 function runTerminal(event) {
   event.preventDefault();
-  const input = event.target.querySelector("input");
+  const form = event.target;
+  const input = form.querySelector("input");
   const command = input.value.trim();
   if (!command) return;
-  const output = event.target.parentElement.querySelector(".terminal-output");
-  const add = text => { const line = document.createElement("p"); line.textContent = text; output.appendChild(line); output.scrollTop = output.scrollHeight; };
-  add(`$ ${command}`);
-  const normalized = command.toLowerCase();
-  let reply = "Command not found. Try ‘help’.";
-  if (normalized === "help") reply = "start · about · projects · current · experience · research · archive · human · contact · safedesk · shell · clear";
-  if (normalized === "whoami" || normalized === "about") { reply = "Shivanya: systems engineer, AI student, teacher, boxer, dancer, and investigator of why the cache is wrong."; openWindow("about"); }
-  if (normalized === "start") { reply = "Opening the 30-second route…"; openWindow("start"); }
-  if (normalized === "projects") { reply = "Opening featured work…"; finderSection = "Featured"; openWindow("finder"); rerenderFinder(); }
-  if (normalized === "current") { reply = "Opening active work…"; openWindow("activity"); }
-  if (normalized === "experience") { reply = "Opening the experience timeline…"; openByName("experience"); }
-  if (normalized === "research") { reply = "Opening the research lab…"; openByName("research"); }
-  if (normalized === "archive") { reply = "Opening version history…"; openByName("archive"); }
-  if (normalized === "human") { reply = "Pausing LeetCode. Opening human stuff…"; openWindow("human"); }
-  if (normalized === "shell") { reply = "Opening the safe shell case study…"; openProject("unix-shell"); }
-  if (normalized === "safedesk") { reply = "Opening SafeDesk… requesting minimum necessary access…"; openProject("safedesk"); }
-  if (normalized === "contact" || normalized === "sudo hire-shivanya") { reply = normalized.startsWith("sudo") ? "Permission granted. Opening contact routes…" : "Opening Mail…"; openWindow("mail"); }
-  if (normalized === "git status") reply = "On branch building-better-systems\nmodified: portfolio_depth\nuntracked: reasonable_sleep_schedule";
-  if (normalized === "clear") { output.innerHTML = ""; input.value = ""; return; }
-  add(reply);
+  const output = form.parentElement.querySelector(".terminal-output");
+  const add = (text, className = "") => {
+    const line = document.createElement("p");
+    line.className = className;
+    line.textContent = text;
+    output.appendChild(line);
+    output.scrollTop = output.scrollHeight;
+  };
+  add(`${shellSession.name || "guest"}@shivanyaos:${shellSession.cwd}$ ${command}`, "terminal-command-line");
+  shellSession.history.push(command);
+  if (shellSession.awaitingName) {
+    shellSession.name = command.slice(0, 40);
+    shellSession.awaitingName = false;
+    add(`Nice to meet you, ${shellSession.name}.\nType help to see what this shell can do,\nor start by exploring with ls.`, "terminal-response");
+    updateTerminalPrompt(form);
+    input.value = "";
+    return;
+  }
+  const pipeline = command.split(/\s*\|\s*/);
+  let result = executeTerminalCommand(pipeline[0], form.closest(".preview-window"));
+  if (pipeline.length > 1) {
+    const pipeTokens = pipeline[1].trim().split(/\s+/);
+    if (pipeTokens.shift()?.toLowerCase() !== "grep") result = "Only supported virtual pipes are available. Try: ls | grep term";
+    else if (typeof result === "string") {
+      const pattern = pipeTokens.join(" ").toLowerCase();
+      result = result.split("\n").filter(line => line.toLowerCase().includes(pattern)).join("\n") || `(no matches for ${pattern})`;
+    }
+  }
+  if (result?.clear) output.innerHTML = "";
+  else add(String(result), "terminal-response");
+  updateTerminalPrompt(form);
   input.value = "";
 }
 
@@ -716,7 +1043,7 @@ function sendMail(event) {
   const email = document.getElementById("mail-email").value;
   const subject = document.getElementById("mail-subject").value;
   const message = document.getElementById("mail-message").value;
-  location.href = `mailto:${EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`Hi Shivanya,\n\n${message}\n\n— ${name}${email ? ` (${email})` : ""}`)}`;
+  location.href = `mailto:${EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`Hi Shivanya,\n\n${message}\n\n${name}${email ? ` (${email})` : ""}`)}`;
 }
 
 async function copyEmail() {
@@ -740,7 +1067,7 @@ function closeMenus() {
 const topMenus = {
   file: `<p>FILE</p><button data-menu="start">Open recruiter fast path <kbd>⌘ 1</kbd></button><button data-project-menu="safedesk">Open SafeDesk</button><a href="https://github.com/shivanya-chandra" target="_blank" rel="noreferrer">Open GitHub <span>↗</span></a><button data-copy-email>Copy email</button>`,
   view: `<p>VIEW</p><button data-view-mode="desktop">Desktop view</button><button data-view-mode="recruiter">Recruiter / list view</button><button data-action="maximize">Maximize active window</button><button data-action="minimize">Minimize active window</button>`,
-  navigate: `<p>NAVIGATE</p><button data-menu="start">Start here</button><button data-menu="current">Current work</button><button data-menu="finder">Featured projects</button><button data-menu="experience">Experience</button><button data-menu="research">Research lab</button><button data-menu="archive">Archive</button><button data-menu="human">Human stuff</button>`,
+  navigate: `<p>NAVIGATE</p><button data-menu="start">Start here</button><button data-menu="current">Current work</button><button data-menu="finder">Featured projects</button><button data-menu="experience">Experience</button><button data-menu="research">Research lab</button><button data-menu="archive">Archive</button><button data-menu="human">Human stuff</button><button data-menu="game">Route the Signal</button>`,
   help: `<p>KEYBOARD</p><div class="shortcut-row"><kbd>⌘ K</kbd><span>Open command palette</span></div><div class="shortcut-row"><kbd>⌘ 1</kbd><span>Recruiter fast path</span></div><div class="shortcut-row"><kbd>⌘ A</kbd><span>About Shivanya</span></div><div class="shortcut-row"><kbd>ESC</kbd><span>Close menus or active window</span></div><button data-menu="about">About this interface</button>`
 };
 
@@ -779,17 +1106,15 @@ document.querySelectorAll("[data-top-menu]").forEach(button => button.addEventLi
     if (recruiter) openWindow("start");
   }));
   menu.querySelectorAll("[data-action]").forEach(item => item.addEventListener("click", () => {
-    if (item.dataset.action === "maximize" && activeWindow) activeWindow.classList.toggle("maximized");
+    if (item.dataset.action === "maximize" && activeWindow) toggleMaximized(activeWindow);
     if (item.dataset.action === "minimize" && activeWindow) minimizeWindow(activeWindow);
     closeMenus();
   }));
 }));
 
 document.getElementById("restart").addEventListener("click", () => {
-  localStorage.removeItem("shivanyaos-preview-booted");
   closeMenus();
-  document.getElementById("boot").style.display = "grid";
-  setTimeout(hideBoot, 920);
+  runStartup({ full: true, reset: true });
 });
 
 document.addEventListener("pointerdown", event => {
@@ -810,6 +1135,7 @@ const paletteItems = [
   { label: "Open Health & Human Sciences", hint: "Public summary", action: () => openProject("hhs") },
   { label: "Browse Research Lab", hint: "Experiments", action: () => openByName("research") },
   { label: "Go to Human Stuff", hint: "Outside work", action: () => openWindow("human") },
+  { label: "Route the Signal", hint: "Signal.app game", action: () => openWindow("game") },
   { label: "Browse Archive", hint: "Version history", action: () => openByName("archive") },
   { label: "Copy email", hint: EMAIL, action: copyEmail },
   { label: "Contact Shivanya", hint: "Mail", action: () => openWindow("mail") }
@@ -853,7 +1179,7 @@ document.addEventListener("keydown", event => {
 
 const mobileTitles = {
   start: "30-second view", about: "About", projects: "Featured Work", research: "Research Lab",
-  experience: "Experience", human: "Human Stuff", archive: "Archive", contact: "Contact", activity: "Current Processes", project: "Project"
+  experience: "Experience", human: "Human Stuff", archive: "Archive", game: "Signal.app", contact: "Contact", activity: "Current Processes", project: "Project"
 };
 
 function mobileProjectCard(slug) {
@@ -872,8 +1198,9 @@ function mobileAppTemplate(name) {
   if (name === "projects") return `<div class="mobile-simple-page"><p class="mobile-eyebrow">FEATURED · SWIPE THROUGH</p><h1>Current and representative work.</h1><div class="mobile-project-stack">${["safedesk","nokia-observability","routewise","unix-shell"].map(mobileProjectCard).join("")}</div></div>`;
   if (name === "research") return `<div class="mobile-simple-page"><p class="mobile-eyebrow">RESEARCH LAB</p><h1>Questions, experiments, and measured results.</h1><div class="mobile-project-stack">${["rag-reliability","hazard-detection","robotic-arm"].map(mobileProjectCard).join("")}</div></div>`;
   if (name === "experience") return `<div class="mobile-simple-page"><p class="mobile-eyebrow">EXPERIENCE</p><h1>The work behind the timeline.</h1><div class="mobile-timeline">${experienceTimeline.map(item => `<button data-mobile-project="${item.slug}"><small>${item.period}</small><span></span><div><strong>${item.title}</strong><p>${item.sub}</p></div><i>›</i></button>`).join("")}</div></div>`;
-  if (name === "human") return `<div class="mobile-simple-page mobile-human-page"><p class="mobile-eyebrow">AFK, OCCASIONALLY</p><h1>Outside the Terminal</h1><p>Boxing, dance, gym, travel, and ordinary Purdue moments—the parts that are not supposed to become productivity metrics.</p><div class="mobile-human-grid">${[["🥊","Boxing","No tabs open."],["♪","Dance","Probably counting."],["↟","Gym","Tiny plates count."],["✈","Travel","Better snacks."],["P","Purdue","Labs + late walks."],["☕","Ordinary days","Usually the good bits."]].map(item => `<article><span>${item[0]}</span><strong>${item[1]}</strong><small>${item[2]}</small></article>`).join("")}</div><p class="mobile-photo-note">Photo slots remain intentionally empty until I choose real personal images to publish.</p></div>`;
+  if (name === "human") return `<div class="mobile-simple-page mobile-human-page"><p class="mobile-eyebrow">AFK, OCCASIONALLY</p><h1>Outside the Terminal</h1><p>When I am not building or debugging something, I am usually boxing, dancing, climbing, working on calisthenics, or convincing myself that walking outside counts as system maintenance.</p><div class="mobile-human-grid">${[["🥊","Boxing","No tabs open."],["♪","Dance","Probably counting."],["↟","Climbing","Finding the route."],["◎","Gym + calisthenics","Patient repetitions."],["✈","Travel","Better snacks."],["∞","Camera Roll","Usually the good bits."]].map(item => `<article><span>${item[0]}</span><strong>${item[1]}</strong><small>${item[2]}</small></article>`).join("")}</div><p class="mobile-photo-note">Photo slots remain intentionally empty until I choose real personal images to publish.</p></div>`;
   if (name === "archive") return `<div class="mobile-simple-page"><p class="mobile-eyebrow">VERSION HISTORY</p><h1>Earlier projects still worth remembering.</h1><div class="mobile-project-stack">${archive.map(item => `<button data-mobile-project="${item.slug}" class="mobile-list-card"><span>⌂</span><div><small>${item.status}</small><strong>${item.title}</strong><p>${item.sub}</p></div><i>›</i></button>`).join("")}</div></div>`;
+  if (name === "game") return gameTemplate();
   if (name === "contact") return `<div class="mobile-simple-page"><p class="mobile-eyebrow">DIRECT CONNECTIONS</p><h1>Let’s build something that explains itself.</h1><p>No form required. Pick the route that works for you.</p><div class="mobile-contact-links"><a href="mailto:${EMAIL}"><span>@</span><div><small>EMAIL</small><strong>${EMAIL}</strong></div></a><a href="https://github.com/shivanya-chandra" target="_blank" rel="noreferrer"><span>GH</span><div><small>GITHUB</small><strong>shivanya-chandra</strong></div></a><a href="https://linkedin.com/in/shivanya-chandra" target="_blank" rel="noreferrer"><span>in</span><div><small>LINKEDIN</small><strong>/in/shivanya-chandra</strong></div></a><button data-copy-email>Copy email address</button></div></div>`;
   if (name === "activity") return `<div class="mobile-simple-page"><p class="mobile-eyebrow">NOTIFICATION CENTER</p><h1>Current processes</h1><div class="mobile-notification-list"><button data-mobile-project="safedesk"><span>⌁</span><div><strong>SafeDesk</strong><p>Permission model updated</p></div></button><button data-mobile-project="teaching"><span>{ }</span><div><strong>Teaching</strong><p>Student successfully defeated recursion</p></div></button><button data-mobile-open="human"><span>✦</span><div><strong>Human Stuff</strong><p>Screen time exceeded. Go boxing.</p></div></button><button data-mobile-open="start"><span>↗</span><div><strong>Portfolio</strong><p>Recruiter fast path ready</p></div></button></div></div>`;
   return "";
@@ -886,6 +1213,7 @@ function attachMobileContent() {
   content.querySelectorAll("[data-copy-email]").forEach(button => button.addEventListener("click", copyEmail));
   content.querySelectorAll("[data-safe-action]").forEach(button => button.addEventListener("click", () => runSafeDeskDemo(button.dataset.safeAction, content)));
   content.querySelectorAll("[data-teaching-issue]").forEach(button => button.addEventListener("click", () => runTeachingDemo(button.dataset.teachingIssue, content)));
+  content.querySelectorAll("[data-game-reset]").forEach(button => button.addEventListener("click", () => startGame(document.getElementById("mobile-app-view"), false)));
   const pid = content.querySelector("#pid-toggle");
   if (pid) pid.addEventListener("change", () => updatePidDemo(pid, content));
 }
@@ -900,22 +1228,75 @@ function showMobileView(title, html) {
   attachMobileContent();
 }
 
-function openMobileApp(name) { showMobileView(mobileTitles[name] || name, mobileAppTemplate(name)); }
+function openMobileApp(name) {
+  showMobileView(mobileTitles[name] || name, mobileAppTemplate(name));
+  if (name === "game") startGame(document.getElementById("mobile-app-view"), true);
+}
 function openMobileProject(slug) { const project = allProject(slug); if (project) showMobileView(project.title, mobileProjectTemplate(slug)); }
-function closeMobileApp() { document.getElementById("mobile-app-view").hidden = true; document.getElementById("mobile-home").hidden = false; document.getElementById("mobile-os").scrollTop = 0; }
+function closeMobileApp() { window.clearInterval(gameTimer); document.getElementById("mobile-app-view").hidden = true; document.getElementById("mobile-home").hidden = false; document.getElementById("mobile-os").scrollTop = 0; }
 
 document.querySelectorAll("[data-mobile-open]").forEach(button => button.addEventListener("click", () => openMobileApp(button.dataset.mobileOpen)));
 document.querySelectorAll("[data-mobile-project]").forEach(button => button.addEventListener("click", () => openMobileProject(button.dataset.mobileProject)));
 document.getElementById("mobile-back").addEventListener("click", closeMobileApp);
 document.getElementById("mobile-home-button").addEventListener("click", closeMobileApp);
 
-function hideBoot() {
-  document.getElementById("boot").style.display = "none";
-  localStorage.setItem("shivanyaos-preview-booted", "true");
+function resetDesktop() {
+  window.clearInterval(gameTimer);
+  window.clearTimeout(startupTimer);
+  windowsLayer.innerHTML = "";
+  activeWindow = null;
+  z = 5;
+  nextPid = 101;
+  finderSection = "Featured";
+  finderListView = false;
+  aboutTab = "About";
+  paletteSelection = 0;
+  gameLevel = 0;
+  gameSeconds = 45;
+  shellSession.cwd = "/";
+  shellSession.history = [];
+  shellSession.name = "";
+  shellSession.awaitingName = false;
+  document.body.classList.remove("recruiter-mode");
+  closePalette();
+  closeMenus();
+  closeMobileApp();
+  updateDock();
+  updateRunningProcesses();
+  history.replaceState(null, "", "#/home");
 }
 
-document.getElementById("skip-boot").addEventListener("click", hideBoot);
-setTimeout(hideBoot, localStorage.getItem("shivanyaos-preview-booted") ? 100 : 920);
+function completeStartup() {
+  window.clearTimeout(startupTimer);
+  document.getElementById("boot").style.display = "none";
+  localStorage.setItem("shivanyaos-preview-booted", "true");
+  const home = openWindow("home");
+  home.classList.remove("maximized");
+}
+
+function runStartup({ full = false, reset = false } = {}) {
+  if (reset) resetDesktop();
+  const boot = document.getElementById("boot");
+  const welcome = document.getElementById("boot-welcome");
+  const title = document.getElementById("boot-title");
+  boot.classList.remove("full-boot", "returning-boot");
+  void boot.offsetWidth;
+  boot.style.display = "grid";
+  if (full) {
+    boot.classList.add("full-boot");
+    welcome.innerHTML = `<p>Hi.</p><strong>I’m Shivanya.</strong><span>Booting a small operating system built from<br>the things I care about.</span>`;
+    title.innerHTML = `initializing ShivanyaOS<span class="blink">_</span>`;
+    startupTimer = window.setTimeout(completeStartup, 3000);
+  } else {
+    boot.classList.add("returning-boot");
+    welcome.innerHTML = `<p>Hi again.</p><strong>Starting ShivanyaOS...</strong>`;
+    title.innerHTML = `starting ShivanyaOS<span class="blink">_</span>`;
+    startupTimer = window.setTimeout(completeStartup, 1050);
+  }
+}
+
+document.getElementById("skip-boot").addEventListener("click", completeStartup);
+runStartup({ full: !localStorage.getItem("shivanyaos-preview-booted") });
 function updateClock() {
   const now = new Date();
   document.getElementById("clock").textContent = new Intl.DateTimeFormat(undefined, { hour: "numeric", minute: "2-digit" }).format(now);
@@ -924,4 +1305,3 @@ function updateClock() {
 }
 updateClock();
 setInterval(updateClock, 30000);
-openWindow("home");
