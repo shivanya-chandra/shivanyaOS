@@ -3,7 +3,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import type { FormEvent, PointerEvent as ReactPointerEvent, ReactNode } from "react";
 
-type AppId = "about" | "finder" | "activity" | "notes" | "terminal" | "resume" | "mail" | "project";
+type AppId = "about" | "finder" | "activity" | "notes" | "terminal" | "mail" | "project";
 type WindowMode = "open" | "minimized" | "maximized";
 type ProjectKind = "personal" | "case-study" | "research" | "current" | "experience" | "archive";
 
@@ -67,7 +67,7 @@ const projects: Project[] = [
       { title: "Architecture", body: "Request → semantic cache → prompt analysis → compression → model router → quality evaluator → return or escalate.", bullets: ["Cache hits bypass new inference", "Complexity and quality needs inform routing", "Failed evaluations escalate to a stronger model", "Cost, latency, and token use are recorded"] },
       { title: "How it works", body: "Straightforward prompts use smaller local or hosted models. Ambiguous or demanding prompts move upward. Responses that miss quality thresholds automatically retry with a stronger route." },
       { title: "Hard parts", body: "The difficult part was not choosing a cheap model; it was defining when cheap stopped being good enough and making fallback behavior measurable rather than hopeful." },
-      { title: "Results", body: "Across more than 10,000 routed requests, the gateway reduced inference cost and prompt volume while preserving the answer-quality target reported in my résumé." },
+      { title: "Results", body: "Across more than 10,000 routed requests, the gateway reduced inference cost and prompt volume while preserving the reported answer-quality target." },
     ],
   },
   {
@@ -173,7 +173,7 @@ const projects: Project[] = [
     technologies: ["TypeScript", "Interface systems", "Accessibility", "Storytelling"],
     sections: [
       { title: "Overview", body: "Not a website pretending to be an operating system—an operating system built around my career, projects, research, and current goals." },
-      { title: "Architecture", body: "A responsive desktop shell, app registry, window manager, project templates, recruiter-first navigation, and direct résumé/contact paths." },
+      { title: "Architecture", body: "A responsive desktop shell, app registry, window manager, project templates, recruiter-first navigation, and direct contact paths." },
       { title: "How it works", body: "Desktop visitors can explore overlapping apps; mobile visitors receive a focused home screen and full-page app views. Important content remains accessible without dragging." },
       { title: "Hard parts", body: "The interface must be playful without turning essential information into a scavenger hunt." },
       { title: "What comes next", body: "Route-backed windows, polished project diagrams, a small set of hard-won engineering notes, and careful motion that respects reduced-motion preferences." },
@@ -192,7 +192,7 @@ const archiveProjects: Project[] = [
   { slug: "college-apps", title: "Navigating College Applications", eyebrow: "Java college filtering tool", summary: "An earlier attempt to simplify college research using scores, expenses, essays, and extracurricular criteria.", kind: "archive", status: "The project before the project became intelligent", date: "v1", technologies: ["Java", "Filtering", "Education"], sections: [{ title: "Original goal", body: "Make a difficult research process less overwhelming through structured filters." }, { title: "What I learned", body: "Useful recommendations need more than filters; they need a model of what the user actually values." }] },
   { slug: "trainher", title: "TrainHer", eyebrow: "Camera-assisted self-defense training", summary: "Guided drills, tutorials, progress tracking, and movement feedback for beginner self-defense practice.", kind: "archive", status: "2nd place hackathon project", date: "Earlier build", technologies: ["Firebase", "Computer vision", "Mobile"], sections: [{ title: "What I built", body: "A camera-assisted training application created within a hackathon timeline." }, { title: "What I learned", body: "A focused problem, clear audience, and working demonstration can matter more than feature count." }] },
   { slug: "boilerfind", title: "BoilerFind", eyebrow: "Purdue mentor matching", summary: "Matched students and mentors by interests and academic preferences with authenticated Purdue flows.", kind: "archive", status: "Archived", date: "Earlier build", technologies: ["Matching", "Authentication", "Backend"], sections: [{ title: "What I built", body: "A mentor-matching system grounded in academic interests and Purdue identity." }, { title: "What I learned", body: "Matching quality depends on the questions a product asks before it starts scoring people." }] },
-  { slug: "marketlearn", title: "MarketLearn", eyebrow: "Earlier résumé project", summary: "An archived product experiment preserved as part of the path to the systems and AI work I do now.", kind: "archive", status: "Archived", date: "Earlier build", technologies: ["Product", "Learning", "Iteration"], sections: [{ title: "Original goal", body: "Explore a practical problem through a small working product." }, { title: "What I learned", body: "Every archived build left behind a sharper question for the next one." }] },
+  { slug: "marketlearn", title: "MarketLearn", eyebrow: "Earlier product experiment", summary: "An archived product experiment preserved as part of the path to the systems and AI work I do now.", kind: "archive", status: "Archived", date: "Earlier build", technologies: ["Product", "Learning", "Iteration"], sections: [{ title: "Original goal", body: "Explore a practical problem through a small working product." }, { title: "What I learned", body: "Every archived build left behind a sharper question for the next one." }] },
 ];
 
 const allProjects = [...projects, ...experienceProjects, ...archiveProjects];
@@ -203,7 +203,6 @@ const appMeta: Record<Exclude<AppId, "project">, { title: string; icon: string; 
   activity: { title: "Activity Monitor", icon: "⌁", className: "icon-activity", size: [760, 570] },
   notes: { title: "Eventually, This Made Sense", icon: "≡", className: "icon-notes", size: [760, 600] },
   terminal: { title: "Terminal", icon: ">_", className: "icon-terminal", size: [720, 500] },
-  resume: { title: "Shivanya_Resume.pdf", icon: "PDF", className: "icon-resume", size: [820, 700] },
   mail: { title: "Mail Shivanya", icon: "↗", className: "icon-mail", size: [720, 600] },
 };
 
@@ -318,20 +317,18 @@ export default function Home() {
     { label: "View featured projects", hint: "Finder", action: () => { setFinderSection("Featured"); openApp("finder"); } },
     { label: "Open SafeDesk", hint: "Currently building", action: () => openProject("safedesk") },
     { label: "Read the RouteWise case study", hint: "Project", action: () => openProject("routewise") },
-    { label: "Preview résumé", hint: "PDF", action: () => openApp("resume") },
     { label: "Contact Shivanya", hint: "Mail", action: () => openApp("mail") },
   ].filter((item) => item.label.toLowerCase().includes(paletteQuery.toLowerCase()));
 
   const runTerminalCommand = (command: string) => {
     const normalized = command.trim().toLowerCase();
     let response = "Command not found. Try ‘help’.";
-    if (normalized === "help") response = "about · projects · experience · research · current · resume · contact · clear · git status · sudo hire-shivanya";
+    if (normalized === "help") response = "about · projects · experience · research · current · contact · clear · git status · sudo hire-shivanya";
     if (normalized === "about" || normalized === "whoami") { response = "Shivanya: software engineer, AI student, systems enthusiast, and frequent investigator of why the cache is wrong."; openApp("about"); }
     if (normalized === "projects" || normalized === "open projects") { response = "Opening Finder…"; setFinderSection("Featured"); openApp("finder"); }
-    if (normalized === "experience") { response = "Opening résumé-verified experience…"; setFinderSection("Experience"); openApp("finder"); }
+    if (normalized === "experience") { response = "Opening experience timeline…"; setFinderSection("Experience"); openApp("finder"); }
     if (normalized === "research") { response = "Opening Research Lab…"; setFinderSection("Research Lab"); openApp("finder"); }
     if (normalized === "current") { response = "SafeDesk and ShivanyaOS are currently building."; setFinderSection("Currently Building"); openApp("finder"); }
-    if (normalized === "resume") { response = "Opening Shivanya_Resume.pdf…"; openApp("resume"); }
     if (normalized === "contact" || normalized === "sudo hire-shivanya") { response = normalized.startsWith("sudo") ? "Permission granted. Opening contact application…" : "Opening Mail…"; openApp("mail"); }
     if (normalized === "git status") response = "On branch building-better-systems\nmodified: sleep_schedule\nuntracked: new_project_idea_47";
     if (normalized === "clear") return setTerminalLines([]);
@@ -356,7 +353,6 @@ export default function Home() {
           <div className="system-menu popover">
             <button onClick={() => openApp("about")}><span>About This Shivanya</span><kbd>⌘ A</kbd></button>
             <button onClick={() => openApp("activity")}><span>System Information</span></button>
-            <a href="/Shivanya_Resume.pdf" download>Download Resume <span>↧</span></a>
             <div className="menu-separator" />
             <button onClick={restart}><span>Restart Portfolio</span></button>
           </div>
@@ -369,7 +365,6 @@ export default function Home() {
           <DesktopIcon label="Projects" icon="⌁" tone="lavender" onOpen={() => { setFinderSection("Featured"); openApp("finder"); }} />
           <DesktopIcon label="Research Lab" icon="∿" tone="mint" onOpen={() => { setFinderSection("Research Lab"); openApp("finder"); }} />
           <DesktopIcon label="Archive" icon="⌂" tone="yellow" onOpen={() => { setFinderSection("Archive"); openApp("finder"); }} />
-          <DesktopIcon label="Shivanya_Resume.pdf" icon="PDF" tone="coral" onOpen={() => openApp("resume")} />
         </div>
 
         <div className="windows-layer">
@@ -380,7 +375,6 @@ export default function Home() {
               {item.appId === "activity" && <ActivityApp openProject={openProject} />}
               {item.appId === "notes" && <NotesApp />}
               {item.appId === "terminal" && <TerminalApp lines={terminalLines} run={runTerminalCommand} />}
-              {item.appId === "resume" && <ResumeApp />}
               {item.appId === "mail" && <MailApp />}
               {item.appId === "project" && item.projectSlug && <ProjectApp project={allProjects.find((project) => project.slug === item.projectSlug)!} />}
             </OSWindow>
@@ -436,12 +430,12 @@ function OSWindow({ state, active, onFocus, onClose, onMinimize, onMaximize, onM
 }
 
 function AboutApp({ openApp, openFinder }: { openApp: (id: Exclude<AppId, "project">) => void; openFinder: () => void }) {
-  return <div className="about-app"><div className="about-hero"><div className="portrait-mark"><span>SC</span><i>operational</i></div><div><p className="eyebrow">Hello, I’m</p><h1>Shivanya Chandra<span>.</span></h1><p className="role-line">Computer Science + Artificial Intelligence at Purdue</p><p className="about-lede">I build backend and AI systems, then make their behavior easier to inspect, debug, and trust.</p><div className="hero-actions"><button className="primary-button" onClick={openFinder}>View projects <span>↗</span></button><a className="secondary-button" href="/Shivanya_Resume.pdf" download>Download résumé <span>↓</span></a><button className="text-button" onClick={() => openApp("mail")}>Contact me</button></div></div></div><div className="about-grid"><section><p className="section-kicker">SYSTEM INFORMATION</p><dl className="system-list"><div><dt>Current status</dt><dd><span className="status-dot" /> Operational</dd></div><div><dt>Current location</dt><dd>Purdue University</dd></div><div><dt>Primary interests</dt><dd>Backend · AI systems · Developer tools</dd></div><div><dt>Side processes</dt><dd>Boxing · Dance · Gym</dd></div></dl></section><section className="witty-specs"><p className="section-kicker">HARDWARE, ALLEGEDLY</p><dl><div><dt>Processor</dt><dd>Curiosity-driven</dd></div><div><dt>Open tabs</dt><dd>Unreasonable</dd></div><div><dt>Retry policy</dt><dd>Persistent</dd></div><div><dt>Current branch</dt><dd>building-better-systems</dd></div></dl></section></div><footer className="about-footer"><span>Available for Summer 2027 opportunities</span><span>Version 2027.0</span></footer></div>;
+  return <div className="about-app"><div className="about-hero"><div className="portrait-mark"><span>SC</span><i>operational</i></div><div><p className="eyebrow">Hello, I’m</p><h1>Shivanya Chandra<span>.</span></h1><p className="role-line">Computer Science + Artificial Intelligence at Purdue</p><p className="about-lede">I build backend and AI systems, then make their behavior easier to inspect, debug, and trust.</p><div className="hero-actions"><button className="primary-button" onClick={openFinder}>View projects <span>↗</span></button><button className="text-button" onClick={() => openApp("mail")}>Contact me</button></div></div></div><div className="about-grid"><section><p className="section-kicker">SYSTEM INFORMATION</p><dl className="system-list"><div><dt>Current status</dt><dd><span className="status-dot" /> Operational</dd></div><div><dt>Current location</dt><dd>Purdue University</dd></div><div><dt>Primary interests</dt><dd>Backend · AI systems · Developer tools</dd></div><div><dt>Side processes</dt><dd>Boxing · Dance · Gym</dd></div></dl></section><section className="witty-specs"><p className="section-kicker">HARDWARE, ALLEGEDLY</p><dl><div><dt>Processor</dt><dd>Curiosity-driven</dd></div><div><dt>Open tabs</dt><dd>Unreasonable</dd></div><div><dt>Retry policy</dt><dd>Persistent</dd></div><div><dt>Current branch</dt><dd>building-better-systems</dd></div></dl></section></div><footer className="about-footer"><span>Available for Summer 2027 opportunities</span><span>Version 2027.0</span></footer></div>;
 }
 
 function FinderApp({ section, setSection, items, openProject }: { section: string; setSection: (value: string) => void; items: Project[]; openProject: (slug: string) => void }) {
   const sections = ["Featured", "Currently Building", "Experience", "Research Lab", "Archive"];
-  return <div className="finder-app"><aside className="finder-sidebar"><div className="sidebar-title"><span className="drive-icon">S</span><div><strong>Shivanya HD</strong><small>Career drive · 2027</small></div></div><p>FAVORITES</p>{sections.map((item) => <button key={item} className={section === item ? "selected" : ""} onClick={() => setSection(item)}><span>{item === "Featured" ? "★" : item === "Currently Building" ? "◌" : item === "Experience" ? "▣" : item === "Research Lab" ? "∿" : "⌂"}</span>{item}<em>{item === "Featured" ? 4 : item === "Currently Building" ? 2 : item === "Experience" ? 4 : item === "Research Lab" ? 3 : 5}</em></button>)}<p>CATEGORIES</p><div className="tag-cloud"><span>AI systems</span><span>Backend</span><span>Research</span><span>Systems</span></div><div className="storage-meter"><div><span>Curiosity used</span><b>84%</b></div><i><em /></i></div></aside><section className="finder-content"><header><div><p className="eyebrow">SHIVANYA HD /</p><h2>{section}</h2></div><div className="view-toggle"><button aria-label="Grid view" className="active">▦</button><button aria-label="List view">☰</button></div></header>{section === "Featured" && <div className="finder-intro"><span>CURATED</span><p>Résumé-verified work that best represents the systems, AI, and research problems I like solving.</p></div>}{section === "Currently Building" && <div className="finder-intro coral-intro"><span>IN MOTION</span><p>Transparent works in progress—not presented as completed résumé projects.</p></div>}{section === "Archive" && <div className="finder-intro yellow-intro"><span>VERSION HISTORY</span><p>Retired, not forgotten. Earlier builds that explain where the current work came from.</p></div>}<div className="project-grid">{items.map((project) => <button className="project-card" key={project.slug} onClick={() => openProject(project.slug)}><div className={`folder-art kind-${project.kind}`}><span>{project.kind === "research" ? "∿" : project.kind === "case-study" ? "◎" : project.kind === "current" ? "◌" : project.kind === "experience" ? "▣" : project.kind === "archive" ? "⌂" : "↗"}</span><i>{project.kind === "case-study" ? "SANITIZED" : project.status.toUpperCase()}</i></div><div className="project-card-copy"><h3>{project.title}</h3><p>{project.eyebrow}</p><small>{project.date}</small></div></button>)}</div></section></div>;
+  return <div className="finder-app"><aside className="finder-sidebar"><div className="sidebar-title"><span className="drive-icon">S</span><div><strong>Shivanya HD</strong><small>Career drive · 2027</small></div></div><p>FAVORITES</p>{sections.map((item) => <button key={item} className={section === item ? "selected" : ""} onClick={() => setSection(item)}><span>{item === "Featured" ? "★" : item === "Currently Building" ? "◌" : item === "Experience" ? "▣" : item === "Research Lab" ? "∿" : "⌂"}</span>{item}<em>{item === "Featured" ? 4 : item === "Currently Building" ? 2 : item === "Experience" ? 4 : item === "Research Lab" ? 3 : 5}</em></button>)}<p>CATEGORIES</p><div className="tag-cloud"><span>AI systems</span><span>Backend</span><span>Research</span><span>Systems</span></div><div className="storage-meter"><div><span>Curiosity used</span><b>84%</b></div><i><em /></i></div></aside><section className="finder-content"><header><div><p className="eyebrow">SHIVANYA HD /</p><h2>{section}</h2></div><div className="view-toggle"><button aria-label="Grid view" className="active">▦</button><button aria-label="List view">☰</button></div></header>{section === "Featured" && <div className="finder-intro"><span>CURATED</span><p>Work that best represents the systems, AI, and research problems I like solving.</p></div>}{section === "Currently Building" && <div className="finder-intro coral-intro"><span>IN MOTION</span><p>Transparent works in progress, clearly separated from completed projects.</p></div>}{section === "Archive" && <div className="finder-intro yellow-intro"><span>VERSION HISTORY</span><p>Retired, not forgotten. Earlier builds that explain where the current work came from.</p></div>}<div className="project-grid">{items.map((project) => <button className="project-card" key={project.slug} onClick={() => openProject(project.slug)}><div className={`folder-art kind-${project.kind}`}><span>{project.kind === "research" ? "∿" : project.kind === "case-study" ? "◎" : project.kind === "current" ? "◌" : project.kind === "experience" ? "▣" : project.kind === "archive" ? "⌂" : "↗"}</span><i>{project.kind === "case-study" ? "SANITIZED" : project.status.toUpperCase()}</i></div><div className="project-card-copy"><h3>{project.title}</h3><p>{project.eyebrow}</p><small>{project.date}</small></div></button>)}</div></section></div>;
 }
 
 function ActivityApp({ openProject }: { openProject: (slug: string) => void }) {
@@ -459,10 +453,6 @@ function TerminalApp({ lines, run }: { lines: string[]; run: (command: string) =
   const [value, setValue] = useState("");
   const submit = (event: FormEvent) => { event.preventDefault(); if (!value.trim()) return; run(value); setValue(""); };
   return <div className="terminal-app"><div className="terminal-top"><span>shivanya@portfolio</span><span>zsh · 80×24</span></div><div className="terminal-output">{lines.map((line, index) => <p key={`${line}-${index}`}>{line}</p>)}</div><form onSubmit={submit}><label htmlFor="terminal-command">shivanya@ShivanyaOS ~ %</label><input id="terminal-command" value={value} onChange={(event) => setValue(event.target.value)} autoComplete="off" spellCheck="false" autoFocus /></form></div>;
-}
-
-function ResumeApp() {
-  return <div className="resume-app"><div className="resume-toolbar"><div><span className="pdf-badge">PDF</span><strong>Shivanya_Resume.pdf</strong><small>1 page · Updated July 2026</small></div><div><a href="/Shivanya_Resume.pdf" target="_blank" rel="noreferrer">Open full screen</a><a className="primary-button" href="/Shivanya_Resume.pdf" download>Download ↓</a></div></div><iframe src="/Shivanya_Resume.pdf#view=FitH" title="Shivanya Chandra résumé preview" /><div className="resume-fallback">Can’t see the preview? <a href="/Shivanya_Resume.pdf" target="_blank" rel="noreferrer">Open the résumé directly.</a></div></div>;
 }
 
 function MailApp() {

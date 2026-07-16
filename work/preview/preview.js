@@ -1,7 +1,23 @@
 const EMAIL = "shivanyachandra01@gmail.com";
-const RESUME_PATH = "../../public/Shivanya_Resume.pdf";
 
 const projectData = {
+  safedesk: {
+    title: "SafeDesk",
+    eyebrow: "Controlled desktop AI · personal project",
+    hook: "A desktop agent designed to complete real tasks without being given unrestricted control.",
+    kind: "current",
+    status: "In development",
+    period: "Now",
+    summary: "I’m exploring how an agent can understand a goal, request only the access it needs, act across controlled environments, verify the outcome, and recover safely when a workflow fails.",
+    metrics: ["Permission-aware access", "Human approval gates", "Reversible actions", "Verification + rollback"],
+    tech: ["Agentic AI", "Permission models", "Isolated execution", "Information-flow controls"],
+    sections: [
+      { title: "The problem", body: "A useful desktop agent needs to act, but unrestricted access is the wrong default. The interesting engineering problem is how to make autonomy legible and bounded: what the agent can see, what it can change, when it must ask, and how a user can recover." },
+      { title: "The safety model", body: "The design starts with minimum necessary permission, explicit approval for sensitive operations, isolated execution environments, action verification, and a detailed history. Reversible actions and rollback are treated as product behavior, not emergency features.", bullets: ["Request access at the moment it is needed", "Preview consequential changes before applying them", "Keep email and unrelated personal data out of scope", "Retain a human-readable action trail"] },
+      { title: "Current progress", body: "I’m currently designing the permission and rollback model, then moving toward controlled application actions and adversarial testing. The goal is not a flashy demo that succeeds once; it is a system that fails in understandable, recoverable ways." },
+      { title: "What I’m testing", body: "The core questions are whether an agent can verify that an action actually produced the intended result, stop when evidence is weak, and recover without making the user reconstruct what happened.", takeaway: "CURRENTLY · Designing permission and rollback model. NEXT · Controlled application actions." }
+    ]
+  },
   "nokia-observability": {
     title: "AI Pipeline Observability",
     eyebrow: "Nokia · public-safe internship case study",
@@ -122,35 +138,37 @@ const projectData = {
     ]
   },
   hhs: {
-    title: "Health & Human Sciences Systems",
-    eyebrow: "Software engineering internship · Purdue",
-    hook: "The best internal tool often removes a task everyone has stopped noticing.",
+    title: "Web Programmer",
+    eyebrow: "Purdue College of Health and Human Sciences",
+    hook: "Building and maintaining the software behind research workflows used by students, faculty, and study administrators.",
     kind: "experience",
     status: "Completed",
     period: "Oct 2024 – May 2026",
-    summary: "Study-setup and grading workflows that reduced repetitive access fixes, review time, and unnecessary API spend.",
-    metrics: ["1,000+ monthly records", "3–4 hours saved/week", "40% less review effort"],
-    tech: ["Backend workflows", "LLM evaluation", "Automation"],
+    summary: "I maintained web systems supporting psychological research, participant management, and internal academic workflows—with reliability and real users in mind.",
+    metrics: ["Thousands of students supported", "40% less manual review", "15+ hours returned", "25% lower API cost"],
+    tech: ["Server-rendered web", "Production debugging", "Workflow automation", "AI evaluation"],
     sections: [
-      { title: "Problem", body: "Recurring study setup and grading tasks were consuming staff time through small access corrections, repeated review, and avoidable manual coordination." },
-      { title: "Contribution", body: "I reworked participant study setup and built rubric-based grading support with clearer decision points and evaluation controls." },
-      { title: "Impact & reflection", body: "The workflows supported more than 1,000 monthly records, saved an estimated three to four staff hours each week, and cut review effort by 40%. Small operational frictions compound; removing them is real systems work." }
+      { title: "Programming for research", body: "At Purdue’s College of Health and Human Sciences, I worked on web systems that support psychological research, participant management, and internal academic workflows. The platform is used by thousands of students as well as faculty and study administrators." },
+      { title: "What I worked on", body: "My work included investigating production issues, improving server-rendered interfaces, maintaining participant workflows, and building automation that reduced repetitive review work for staff. I also evaluated AI-assisted approaches for reliability, operating cost, and whether they genuinely improved the existing workflow." },
+      { title: "Practical impact", body: "One project reduced manual review effort by approximately 40% and returned more than 15 hours of repetitive work to staff. Comparing multiple technical approaches also helped reduce API cost by roughly 25% while preserving usefulness." },
+      { title: "What it taught me", body: "Internal software still deserves strong engineering. A tool may not be public-facing, but its reliability directly affects researchers, administrators, and students trying to complete real work.", takeaway: "ACCESS LEVEL · PUBLIC SUMMARY. Research data, participant information, internal infrastructure, and administrative implementation details remain protected." }
     ]
   },
   teaching: {
-    title: "CS 180 Teaching Assistant",
-    eyebrow: "Purdue · Object-oriented programming in Java",
-    hook: "Teaching made recurring bugs look like product feedback.",
+    title: "Object-Oriented Programming Teaching Assistant",
+    eyebrow: "Purdue University · CS 18000",
+    hook: "Helping students get from ‘I have no idea what this error means’ to ‘wait, I actually understand this.’",
     kind: "experience",
     status: "Completed",
     period: "Aug 2024 – May 2026",
-    summary: "Labs, office hours, assignment review, and recurring-bug diagnosis for introductory Java students.",
-    metrics: ["20+ students", "100+ assignments/semester"],
-    tech: ["Java", "OOP", "Debugging", "Teaching"],
+    summary: "I helped students move from Java syntax to reasoning about classes, inheritance, interfaces, debugging, testing, concurrency, and larger software projects.",
+    metrics: ["200+ students supported weekly", "100+ submissions evaluated", "Labs + office hours", "Java + OOP"],
+    tech: ["Java", "Object-oriented design", "Concurrency", "Client-server programming", "Teaching"],
     sections: [
-      { title: "Role", body: "I led labs and office hours, reviewed student work, and helped students move from symptoms to the underlying model they had misunderstood." },
-      { title: "What changed", body: "Patterns across more than 100 assignments per semester became clearer examples, debugging prompts, and explanations for a class of more than 20 students." },
-      { title: "Reflection", body: "A psychology minor makes me pay attention to the gap between what a system says and what a person believes it said. Teaching turned that gap into something I could observe every week." }
+      { title: "Teaching object-oriented programming", body: "As a Teaching Assistant for Purdue’s introductory object-oriented programming course, I supported students as they moved from basic Java syntax to classes, inheritance, interfaces, debugging, testing, concurrency, and larger software projects." },
+      { title: "How I help", body: "The part I enjoy most is helping someone untangle a problem without handing them the answer. During labs and office hours, I break confusing errors into smaller questions, trace what the program is actually doing, and help students build debugging habits they can carry forward." },
+      { title: "The scale", body: "I supported more than 200 students each week through labs and office hours, evaluated over 100 submissions, and helped students navigate projects involving object-oriented design, concurrency, and client-server programming." },
+      { title: "What teaching changed", body: "Teaching made me a better engineer. It taught me to explain an idea from multiple perspectives, recognize where a mental model has broken down, and communicate complicated concepts without making a student feel that they are the complicated part." }
     ]
   },
   shivanyaos: {
@@ -164,7 +182,7 @@ const projectData = {
     metrics: ["Recruiter fast path", "Keyboard navigation", "Responsive windows"],
     tech: ["JavaScript", "Interface systems", "Accessibility", "Storytelling"],
     sections: [
-      { title: "The design constraint", body: "ShivanyaOS should feel specific to me without hiding the résumé, project evidence, contact actions, or current work behind decorative controls." },
+      { title: "The design constraint", body: "ShivanyaOS should feel specific to me without hiding project evidence, contact actions, or current work behind decorative controls." },
       { title: "What I built", body: "A responsive desktop shell, window manager, recruiter view, project-specific case-study visuals, command palette, running-process dock, and direct professional links." },
       { title: "What comes next", body: "Replace the illustrated human-space moments with a small camera roll of photos I explicitly choose to publish, then keep refining the visual evidence inside each case study." }
     ]
@@ -190,6 +208,7 @@ const experienceTimeline = [
 ];
 
 const titles = {
+  home: "initializing_shivanya()",
   about: "About This Shivanya",
   start: "Start Here · 30-second view",
   finder: "Finder",
@@ -197,18 +216,18 @@ const titles = {
   human: "Outside the Terminal",
   notes: "Eventually, This Made Sense",
   terminal: "Terminal",
-  resume: "Shivanya_Resume.pdf",
   mail: "Mail Shivanya"
 };
 
 const sizes = {
-  about: [820, 650], start: [960, 680], finder: [980, 680], activity: [820, 630], human: [960, 680],
-  notes: [780, 620], terminal: [720, 500], resume: [840, 700], mail: [760, 620]
+  home: [760, 480], about: [900, 690], start: [960, 680], finder: [980, 680], activity: [820, 630], human: [960, 680],
+  notes: [780, 620], terminal: [720, 500], mail: [760, 620]
 };
 
 const minimizedStatus = {
   about: "still overthinking the bio", start: "fast path ready", finder: "indexing the work", activity: "monitoring reality",
-  human: "away from keyboard", notes: "mental model cached", terminal: "background job", resume: "one page, somehow", mail: "connection open",
+  home: "boot sequence complete", human: "away from keyboard", notes: "mental model cached", terminal: "background job", mail: "connection open",
+  safedesk: "checking permissions",
   "nokia-observability": "watching the pipeline", routewise: "routing cheaply", "unix-shell": "background job",
   "rag-reliability": "evaluating evidence", "hazard-detection": "listening to sensors", "robotic-arm": "recalculating trajectory",
   genpact: "routing exceptions", archive: "not deprecated, just older"
@@ -218,6 +237,7 @@ let z = 5;
 let activeWindow = null;
 let finderSection = "Featured";
 let finderListView = false;
+let aboutTab = "About";
 let paletteSelection = 0;
 const windowsLayer = document.getElementById("windows");
 const toast = document.getElementById("toast");
@@ -248,30 +268,42 @@ function projectCard(item) {
   return `<button data-project="${item.slug}" class="project-card"><div class="folder-art kind-${item.kind}"><span>${icon}</span><i>${escapeHtml(badge)}</i></div><div class="project-card-copy"><h3>${escapeHtml(item.title)}</h3><p>${escapeHtml(item.sub || item.eyebrow)}</p><small>${escapeHtml(item.period)}</small></div></button>`;
 }
 
+function homeTemplate() {
+  return `<div class="home-app"><div class="home-signal" aria-hidden="true"><svg viewBox="0 0 72 72"><path d="M57 14H31C17 14 10 20 10 29s8 14 21 14h12c10 0 17 5 17 13s-7 12-19 12H15"/><circle cx="53" cy="14" r="4"/></svg></div><p class="home-command">initializing_shivanya()</p><div class="home-boot-copy"><span>boot sequence complete</span><span>identity: Shivanya Chandra</span><span>location: Purdue University</span><span>mode: building things that (hopefully) make sense</span></div><h1>I turn messy systems into things people can understand and use.</h1><p>I’m a Computer Science + Artificial Intelligence student. Most of what I build lives behind the scenes: backend systems, practical AI tools, and software that quietly does its job well—with reliability, explainability, and real people in mind.</p><div class="home-processes"><small>current_processes:</small><span>building</span><span>researching</span><span>teaching</span><span>occasionally touching grass</span></div><div class="home-actions"><button class="primary-button" data-open="finder">View my work ↗</button><button class="secondary-button" data-open="start">30-second overview</button><button class="text-button" data-open="about">More about me</button></div></div>`;
+}
+
+function aboutPanel() {
+  const panels = {
+    About: `<p class="section-kicker">ABOUT</p><h2>Technical depth, practical usefulness, and a little curiosity about how people think.</h2><p>I study Computer Science and Artificial Intelligence at Purdue, with a psychology minor that keeps pulling my attention toward the human side of systems. I’m most interested in backend, AI infrastructure, observability, reliability, and developer tools.</p><div class="about-mini-grid"><span><small>NOW</small>Building SafeDesk and observability systems</span><span><small>LEARNING</small>Safer agent actions and information-flow controls</span><span><small>LOOKING FOR</small>2027 backend, AI infrastructure, or reliability roles</span></div>`,
+    "How I Think": `<p class="section-kicker">HOW I THINK</p><h2>Systems, signals, and the mental model in between.</h2><p>Observability and reliability turn invisible behavior into something a team can reason about. AI makes that need sharper: a plausible output is not the same as an explainable decision. Psychology makes me notice attention, confidence, cognitive load, and the stories users form when software gives incomplete feedback.</p><blockquote>The system’s behavior and the user’s understanding are both part of the product.</blockquote>`,
+    "Why I Build": `<p class="section-kicker">WHY I BUILD</p><h2>I like projects where technical depth becomes practical usefulness.</h2><p>I gravitate toward distributed workflows, AI decisions, process behavior, and tools that help people see what software actually did. The satisfying part is not only making something work—it is making the result reliable, inspectable, and easier for the next person to understand.</p><button class="secondary-button" data-open="finder">See the work ↗</button>`,
+    Teaching: `<p class="section-kicker">TEACHING</p><h2>An explanation is a debugging tool.</h2><p>Teaching CS 180 showed me how often a recurring bug is really a broken mental model. Helping a student trace their own reasoning—without taking the problem away from them—made me more patient, more precise, and much better at explaining technical choices.</p><button class="secondary-button" data-project="teaching">Open the teaching window ↗</button>`,
+    "Outside the Terminal": `<p class="section-kicker">OUTSIDE THE TERMINAL</p><h2>Boxing, dance, gym, travel, and ordinary Purdue life.</h2><p>I like having parts of my life where progress is physical, social, slightly chaotic, or impossible to express as a benchmark. They make the technical work better by giving me somewhere else to put my attention.</p><button class="secondary-button" data-open="human">Open Human Stuff ↗</button>`
+  };
+  return panels[aboutTab];
+}
+
 function aboutTemplate() {
-  return `<div class="about-app expanded-about">
-    <div class="about-hero"><div class="portrait-mark"><span>SC</span><i>operational</i></div><div><p class="eyebrow">HELLO, I’M</p><h1>Shivanya Chandra<span>.</span></h1><p class="role-line">Computer Science + Artificial Intelligence + Psychology at Purdue</p><p class="about-lede">I gravitate toward systems that are difficult to see from the outside: distributed workflows, AI decisions, process behavior, and the gap between what software did and what a person thinks it did.</p><div class="hero-actions"><button class="primary-button" data-open="start">Start with the 30-second view <span>↗</span></button><button class="secondary-button" data-open="finder">Explore the work</button><button class="text-button" data-open="human">Outside the terminal</button></div></div></div>
-    <div class="about-story"><section><p class="section-kicker">WHY THESE SYSTEMS</p><p>Observability and reliability turn invisible behavior into something a team can reason about. AI makes that need sharper: a plausible output is not the same as an explainable decision. Teaching keeps me honest about whether an explanation actually helps another person build a usable mental model.</p></section><section><p class="section-kicker">THE PSYCHOLOGY LAYER</p><p>My psychology minor makes me notice attention, confidence, cognitive load, and the stories users form when a system gives incomplete feedback. That perspective shapes how I design debugging tools and human-in-the-loop workflows.</p></section><section><p class="section-kicker">WHAT I’M LOOKING FOR</p><p>For 2027 roles, I’m looking for backend, AI infrastructure, developer-tooling, or reliability work with thoughtful teammates, clear ownership, generous technical debate, and enough curiosity to investigate why the system behaves the way it does.</p></section></div>
-    <div class="contact-ribbon"><a href="https://github.com/shivanya-chandra" target="_blank" rel="noreferrer">GitHub ↗</a><a href="https://linkedin.com/in/shivanya-chandra" target="_blank" rel="noreferrer">LinkedIn ↗</a><a href="mailto:${EMAIL}">Email ↗</a><button data-copy-email>Copy email</button><a href="${RESUME_PATH}" download>Download résumé ↓</a></div>
-  </div>`;
+  const tabs = ["About", "How I Think", "Why I Build", "Teaching", "Outside the Terminal"];
+  return `<div class="about-app tabbed-about"><div class="about-identity"><div class="portrait-mark"><span>SC</span><i>operational</i></div><div><p class="eyebrow">SHIVANYA CHANDRA</p><h1>Systems → signals → understanding.</h1><p>Computer Science + Artificial Intelligence + Psychology at Purdue</p></div></div><nav class="about-tabs" aria-label="About sections">${tabs.map(tab => `<button data-about-tab="${tab}" class="${tab === aboutTab ? "selected" : ""}">${tab}</button>`).join("")}</nav><section class="about-panel">${aboutPanel()}</section><div class="contact-ribbon"><a href="https://github.com/shivanya-chandra" target="_blank" rel="noreferrer">GitHub ↗</a><a href="https://linkedin.com/in/shivanya-chandra" target="_blank" rel="noreferrer">LinkedIn ↗</a><a href="mailto:${EMAIL}">Email ↗</a><button data-copy-email>Copy email</button></div></div>`;
 }
 
 function startTemplate() {
   const highlights = [
     ["01", "Experience", "Nokia observability, Genpact workflow systems, Purdue engineering, and teaching.", "experience"],
-    ["02", "Featured work", "Custom Unix Shell and RouteWise, with the engineering decisions behind the metrics.", "finder"],
+    ["02", "Featured work", "SafeDesk, Nokia observability, RouteWise, and the Custom Unix Shell.", "finder"],
     ["03", "Research", "RAG reliability, real-time hazard detection, and robotic-arm planning and control.", "research"],
-    ["04", "Contact", "GitHub, LinkedIn, email, and résumé—always one click away.", "mail"]
+    ["04", "Contact", "GitHub, LinkedIn, and email—direct and easy to find.", "mail"]
   ];
   return `<div class="start-app"><header><div><p class="eyebrow">RECRUITER FAST PATH · ABOUT 30 SECONDS</p><h1>The useful version,<br>before the side quests.</h1><p>Backend and AI systems engineer focused on observability, reliability, developer tools, and explanations people can actually use.</p></div><div class="start-status"><span>AVAILABLE</span><strong>2027 opportunities</strong><small>West Lafayette · open to relocation</small></div></header>
-    <section class="start-snapshot"><article><small>CURRENT</small><strong>Nokia observability framework</strong><span>Running</span></article><article><small>RECENT</small><strong>Custom Unix Shell</strong><span>Completed</span></article><article><small>FEATURED</small><strong>RouteWise</strong><span>52% lower inference cost</span></article><article><small>RESEARCH</small><strong>RAG reliability</strong><span>0.61 → 0.84 precision</span></article></section>
+    <section class="start-snapshot"><article><small>BUILDING</small><strong>SafeDesk</strong><span>Permission model in progress</span></article><article><small>CURRENT</small><strong>Nokia observability</strong><span>Running</span></article><article><small>FEATURED</small><strong>RouteWise</strong><span>52% lower inference cost</span></article><article><small>TEACHING</small><strong>CS 18000</strong><span>200+ students weekly</span></article></section>
     <section class="fast-path">${highlights.map(item => `<button data-fast="${item[3]}"><span>${item[0]}</span><div><strong>${item[1]}</strong><p>${item[2]}</p></div><i>↗</i></button>`).join("")}</section>
-    <footer><div><strong>Want the one-page version?</strong><span>Same evidence, less operating system.</span></div><a class="primary-button" href="${RESUME_PATH}" target="_blank" rel="noreferrer">Open Shivanya_Resume.pdf ↗</a></footer></div>`;
+    <footer><div><strong>Want to talk about the work?</strong><span>The direct routes do not require navigating a maze.</span></div><button class="primary-button" data-open="mail">Contact Shivanya ↗</button></footer></div>`;
 }
 
 function finderItems(section) {
-  const featured = ["nokia-observability", "unix-shell", "routewise", "rag-reliability"];
-  const current = ["nokia-observability", "shivanyaos", "unix-shell", "routewise"];
+  const featured = ["safedesk", "nokia-observability", "routewise", "unix-shell"];
+  const current = ["safedesk", "nokia-observability", "shivanyaos", "unix-shell"];
   const research = ["rag-reliability", "hazard-detection", "robotic-arm"];
   if (section === "Featured") return featured.map(slug => ({ slug, ...projectData[slug] }));
   if (section === "Current Work") return current.map(slug => ({ slug, ...projectData[slug] }));
@@ -284,7 +316,7 @@ function finderTemplate() {
   const sections = ["Featured", "Current Work", "Experience", "Research Lab", "Archive"];
   const counts = [4, 4, 7, 3, 5];
   const intros = {
-    Featured: ["CURATED", "Résumé-verified work, expanded into the problem, contribution, measured change, and technical takeaway."],
+    Featured: ["CURATED", "Current and representative work, expanded into the problem, contribution, measured change, and technical takeaway."],
     "Current Work": ["PROCESS STATE", "What is running, recently completed, under active development, or preserved in the archive."],
     Experience: ["TIMELINE", "A browseable path through internships, research, systems work, and teaching."],
     "Research Lab": ["EXPERIMENTS", "Research question → variables → measured result → what failed or surprised me."],
@@ -301,6 +333,7 @@ function experienceTimelineTemplate() {
 
 function activityTemplate() {
   const processes = [
+    ["SafeDesk", "In development", "safedesk", "green"],
     ["Nokia Observability Framework", "Running", "nokia-observability", "green"],
     ["ShivanyaOS portfolio", "In development", "shivanyaos", "green"],
     ["Custom Unix Shell", "Recently completed", "unix-shell", "lavender"],
@@ -310,7 +343,7 @@ function activityTemplate() {
   ];
   return `<div class="activity-app"><header class="app-header"><div><p class="eyebrow">SOURCE OF TRUTH · NOT EMOTIONALLY CALIBRATED</p><h2>Active processes</h2><p>Current, recently completed, research, and archived work in one view.</p></div><div class="live-pill"><span></span>updated July 2026</div></header>
     <div class="process-table modern-process"><div class="process-head"><span>PROCESS</span><span>STATE</span><span>OPEN</span></div>${processes.map(process => `<button ${process[2] ? `data-project="${process[2]}"` : "disabled"}><span><i class="${process[3]}"></i>${process[0]}</span><b>${process[1]}</b><em>${process[2] ? "View ↗" : "Finder / Archive"}</em></button>`).join("")}</div>
-    <div class="activity-lower"><section><p class="section-kicker">WHAT IS ACTUALLY MOVING</p><div class="process-note"><strong>Nokia</strong><p>Shared lifecycle instrumentation, failure visibility, and vendor-independent telemetry representation.</p></div><div class="process-note"><strong>ShivanyaOS</strong><p>Case-study depth, visual evidence, personal layer, and a faster route for recruiters.</p></div></section><section class="touching-grass"><p class="section-kicker">OUTSIDE-WORK PROCESSES</p><div><span>boxing.service</span><b>Active</b></div><div><span>dance.service</span><b>Recurring</b></div><div><span>gym.service</span><b>Persistent</b></div><button data-open="human">Open human stuff ↗</button></section></div></div>`;
+    <div class="activity-lower"><section><p class="section-kicker">WHAT IS ACTUALLY MOVING</p><div class="process-note"><strong>SafeDesk</strong><p>Permission-aware actions, verification, rollback, and safe recovery for a controlled desktop agent.</p></div><div class="process-note"><strong>Nokia</strong><p>Shared lifecycle instrumentation, failure visibility, and vendor-independent telemetry representation.</p></div></section><section class="touching-grass"><p class="section-kicker">OUTSIDE-WORK PROCESSES</p><div><span>boxing.service</span><b>Active</b></div><div><span>dance.service</span><b>Recurring</b></div><div><span>gym.service</span><b>Persistent</b></div><button data-open="human">Open human stuff ↗</button></section></div></div>`;
 }
 
 function humanTemplate() {
@@ -347,15 +380,12 @@ function terminalTemplate() {
   return `<div class="terminal-app"><div class="terminal-top"><span>shivanya@portfolio</span><span>safe terminal · 80×24</span></div><div class="terminal-output" id="terminal-output"><p>ShivanyaOS Terminal · type ‘help’ to begin.</p></div><form id="terminal-form"><label for="terminal-command">shivanya@ShivanyaOS ~ %</label><input id="terminal-command" autocomplete="off" spellcheck="false"></form></div>`;
 }
 
-function resumeTemplate() {
-  return `<div class="resume-app"><div class="resume-toolbar"><div><span class="pdf-badge">PDF</span><div><strong>Shivanya_Resume.pdf</strong><small>1 page · Updated July 2026</small></div></div><div><a href="${RESUME_PATH}" target="_blank" rel="noreferrer">Open full screen</a><a class="primary-button" href="${RESUME_PATH}" download>Download ↓</a></div></div><iframe src="${RESUME_PATH}#view=FitH" title="Shivanya Chandra résumé preview"></iframe><div class="resume-fallback">Can’t see the preview? <a href="${RESUME_PATH}" target="_blank" rel="noreferrer">Open Shivanya_Resume.pdf directly.</a></div></div>`;
-}
-
 function mailTemplate() {
   return `<div class="mail-app"><div class="contact-card"><p class="eyebrow">DIRECT CONNECTIONS</p><h2>Let’s build something<br>that explains itself.</h2><p>No form required. The direct routes are always visible.</p><a href="mailto:${EMAIL}"><span>@</span><div><small>EMAIL</small><strong>${EMAIL}</strong></div></a><a href="https://github.com/shivanya-chandra" target="_blank" rel="noreferrer"><span>GH</span><div><small>GITHUB</small><strong>shivanya-chandra</strong></div></a><a href="https://linkedin.com/in/shivanya-chandra" target="_blank" rel="noreferrer"><span>in</span><div><small>LINKEDIN</small><strong>/in/shivanya-chandra</strong></div></a><button data-copy-email>Copy email address</button></div><form id="mail-form"><div class="compose-row"><span>To:</span><strong>Shivanya Chandra</strong></div><label>Your name<input required id="mail-name" placeholder="Jane Recruiter"></label><label>Email<input type="email" id="mail-email" placeholder="jane@company.com"></label><label>Subject<select id="mail-subject"><option>2027 opportunity</option><option>Project collaboration</option><option>Technical conversation</option><option>Something interesting</option></select></label><label>Message<textarea required id="mail-message" placeholder="Tell me what’s on your mind…"></textarea></label><button class="primary-button" type="submit">Open in mail app ↗</button></form></div>`;
 }
 
 function visualForProject(slug) {
+  if (slug === "safedesk") return `<div class="case-visual permission-center"><div class="permission-task"><p>TASK</p><strong>Organize downloaded internship documents</strong><small>Agent requests only the access required for this task.</small><div class="requested-access"><p>REQUESTED ACCESS</p><span><i>✓</i> Downloads folder</span><span><i>✓</i> File renaming</span><span class="denied"><i>×</i> Email</span><span class="denied"><i>×</i> Browser history</span></div></div><div class="permission-plan"><p>PROPOSED PLAN</p><ol><li>Identify application documents</li><li>Group by company</li><li>Standardize filenames</li><li>Preview proposed changes</li><li>Apply after approval</li></ol><div class="safe-actions"><button data-safe-action="preview">Preview</button><button data-safe-action="approve">Approve plan</button><button data-safe-action="rollback">Rollback</button></div><strong id="safe-status">ROLLBACK AVAILABLE · NO CHANGES APPLIED</strong></div></div>`;
   if (slug === "unix-shell") return `<div class="case-visual shell-inspector"><div class="mini-terminal"><div><span></span><span></span><span></span><b>shivanya-shell</b></div><p id="shell-demo-output"><i>$</i> echo hello | grep h &gt; result.txt<br><em>pipeline complete · 0</em></p><nav>${["help", "architecture", "pipeline", "signals", "lessons"].map(command => `<button data-shell-command="${command}">${command}</button>`).join("")}</nav></div><div class="process-flow">${["parser", "fork / exec", "pipe config", "redirection", "foreground job"].map((step, index) => `<span>${step}${index < 4 ? "<i>↓</i>" : ""}</span>`).join("")}</div></div>`;
   if (slug === "routewise") return `<div class="case-visual route-console"><div class="route-choices"><p>TRY A REQUEST</p>${[["simple", "Simple factual"], ["coding", "Coding"], ["research", "Long research"], ["cached", "Previously answered"]].map(item => `<button data-route-case="${item[0]}">${item[1]}</button>`).join("")}</div><div class="route-path" id="route-path"><span>Incoming request</span><i>↓</i><span>Cache match?</span><i>↓</i><strong>Small model</strong><i>↓</i><span>Quality check</span><small id="route-reason">Low complexity · start small, verify quality.</small></div></div>`;
   if (slug === "nokia-observability") return `<div class="case-visual observe-console"><div class="observe-flow">${["Request received", "Processing stage", "AI enrichment", "Result delivery"].map((stage, index) => `<span><i>${String(index + 1).padStart(2, "0")}</i>${stage}<b>${index < 3 ? "→" : "✓"}</b></span>`).join("")}</div><div class="signal-panel"><p>EACH STAGE EMITS</p><span>status</span><span>timestamp</span><span>health</span><span>failure context</span><strong>failure visibility · 30s</strong></div></div>`;
@@ -363,6 +393,8 @@ function visualForProject(slug) {
   if (slug === "hazard-detection") return `<div class="case-visual hazard-board"><header><span class="pulse"></span><strong>15,284 events/hour</strong><small>p95 · 1.8s</small></header><div><span>Zone A</span><b class="normal">Normal</b></div><div><span>Zone B</span><b class="warning">Signal confidence falling</b></div><div><span>Zone C</span><b class="danger">Hazard detected</b></div><div><span>Sensor 17</span><b class="device">Device-health warning</b></div></div>`;
   if (slug === "robotic-arm") return `<div class="case-visual motion-lab"><div class="arm-stage"><span class="arm-base"></span><span class="arm-one"></span><span class="arm-two"></span><i class="target">×</i><div class="motion-path"></div></div><div class="control-panel"><p>MOTION PIPELINE</p><span>RRT* → IK → PID → pick</span><label><input type="checkbox" id="pid-toggle" checked><i></i> PID tuned</label><small id="pid-status">Stable approach · reduced oscillation</small></div></div>`;
   if (slug === "genpact") return `<div class="case-visual workflow-center"><div class="workflow-line">${["Business event", "Validate + dedupe", "SLA + priority", "Route or assist", "Audit trail"].map((step, index) => `<span><i>${index + 1}</i>${step}${index < 4 ? "<b>→</b>" : ""}</span>`).join("")}</div><small>Public-safe workflow view · client rules omitted</small></div>`;
+  if (slug === "hhs") return `<div class="case-visual research-status"><header><div><p>RESEARCH SYSTEM STATUS</p><strong>ACCESS LEVEL: PUBLIC SUMMARY</strong></div><span>Protected</span></header><div><span>Participant portal</span><b>Healthy</b></div><div><span>Workflow automation</span><b>Running</b></div><div><span>Manual review load</span><b>↓ 40%</b></div><div><span>Hours returned to staff</span><b>15+</b></div><div><span>API operating cost</span><b>↓ 25%</b></div><footer>Sensitive research and participant data hidden.</footer></div>`;
+  if (slug === "teaching") return `<div class="case-visual office-hours"><div class="student-queue"><p>STUDENT QUEUE</p>${[["null","NullPointerException","Helping now"],["inheritance","Inheritance confusion","Next"],["threads","Thread synchronization","Waiting"],["laptop","“Works on my laptop”","Recurring"]].map((item,index) => `<button data-teaching-issue="${item[0]}" class="${index===0?"selected":""}"><span>${item[1]}</span><b>${item[2]}</b></button>`).join("")}</div><div class="teaching-principle"><p>TEACHING PRINCIPLE</p><strong id="teaching-principle">Trace the object, not just the line.</strong><small>Ask one smaller question, then let the student own the next step.</small></div></div>`;
   return `<div class="case-visual default-visual"><span>${slug === "shivanyaos" ? "SC" : "↗"}</span><div><strong>System view</strong><small>Problem → contribution → result → reflection</small></div></div>`;
 }
 
@@ -380,6 +412,7 @@ function projectTemplate(project, slug) {
 }
 
 function templateFor(app) {
+  if (app === "home") return homeTemplate();
   if (app === "about") return aboutTemplate();
   if (app === "start") return startTemplate();
   if (app === "finder") return finderTemplate();
@@ -387,7 +420,6 @@ function templateFor(app) {
   if (app === "human") return humanTemplate();
   if (app === "notes") return notesTemplate();
   if (app === "terminal") return terminalTemplate();
-  if (app === "resume") return resumeTemplate();
   return mailTemplate();
 }
 
@@ -518,6 +550,11 @@ function attachWindow(el) {
 
 function attachContent(el) {
   el.querySelectorAll("[data-open]").forEach(button => button.addEventListener("click", () => openByName(button.dataset.open)));
+  el.querySelectorAll("[data-about-tab]").forEach(button => button.addEventListener("click", () => {
+    aboutTab = button.dataset.aboutTab;
+    el.querySelector(".window-body").innerHTML = aboutTemplate();
+    attachContent(el);
+  }));
   el.querySelectorAll("[data-fast]").forEach(button => button.addEventListener("click", () => {
     const destination = button.dataset.fast;
     if (["experience", "research"].includes(destination)) {
@@ -555,13 +592,19 @@ function attachContent(el) {
   }));
   el.querySelectorAll("[data-shell-command]").forEach(button => button.addEventListener("click", () => runShellDemo(button.dataset.shellCommand, el)));
   el.querySelectorAll("[data-route-case]").forEach(button => button.addEventListener("click", () => runRouteDemo(button.dataset.routeCase, el)));
+  el.querySelectorAll("[data-safe-action]").forEach(button => button.addEventListener("click", () => runSafeDeskDemo(button.dataset.safeAction, el)));
+  el.querySelectorAll("[data-teaching-issue]").forEach(button => button.addEventListener("click", () => runTeachingDemo(button.dataset.teachingIssue, el)));
   const pid = el.querySelector("#pid-toggle");
   if (pid) pid.addEventListener("change", () => updatePidDemo(pid, el));
   const terminal = el.querySelector("#terminal-form");
   if (terminal) terminal.addEventListener("submit", runTerminal);
   const mail = el.querySelector("#mail-form");
   if (mail) mail.addEventListener("submit", sendMail);
-  el.querySelectorAll("[data-human-photo]").forEach(image => image.addEventListener("load", () => image.parentElement.classList.add("has-photo")));
+  el.querySelectorAll("[data-human-photo]").forEach(image => {
+    const reveal = () => image.parentElement.classList.add("has-photo");
+    image.addEventListener("load", reveal);
+    if (image.complete && image.naturalWidth) reveal();
+  });
 }
 
 function rerenderFinder() {
@@ -610,6 +653,28 @@ function runRouteDemo(type, el) {
   el.querySelector("#route-reason").textContent = routes[type][1];
 }
 
+function runSafeDeskDemo(action, el) {
+  const status = el.querySelector("#safe-status");
+  const messages = {
+    preview: "PREVIEW READY · 8 FILE RENAMES · 0 CHANGES APPLIED",
+    approve: "APPROVED · CONTROLLED ACTIONS MAY PROCEED",
+    rollback: "ROLLED BACK · ORIGINAL STATE RESTORED"
+  };
+  el.querySelectorAll("[data-safe-action]").forEach(button => button.classList.toggle("selected", button.dataset.safeAction === action));
+  status.textContent = messages[action];
+}
+
+function runTeachingDemo(issue, el) {
+  const principles = {
+    null: "Trace the object, not just the line.",
+    inheritance: "Ask what relationship the design is actually expressing.",
+    threads: "Draw the shared state before debugging the threads.",
+    laptop: "Reproduce first, theorize second."
+  };
+  el.querySelectorAll("[data-teaching-issue]").forEach(button => button.classList.toggle("selected", button.dataset.teachingIssue === issue));
+  el.querySelector("#teaching-principle").textContent = principles[issue];
+}
+
 function updatePidDemo(input, el) {
   const stage = el.querySelector(".arm-stage");
   stage.classList.toggle("untuned", !input.checked);
@@ -627,7 +692,7 @@ function runTerminal(event) {
   add(`$ ${command}`);
   const normalized = command.toLowerCase();
   let reply = "Command not found. Try ‘help’.";
-  if (normalized === "help") reply = "start · about · projects · current · experience · research · archive · human · resume · contact · shell · clear";
+  if (normalized === "help") reply = "start · about · projects · current · experience · research · archive · human · contact · safedesk · shell · clear";
   if (normalized === "whoami" || normalized === "about") { reply = "Shivanya: systems engineer, AI student, teacher, boxer, dancer, and investigator of why the cache is wrong."; openWindow("about"); }
   if (normalized === "start") { reply = "Opening the 30-second route…"; openWindow("start"); }
   if (normalized === "projects") { reply = "Opening featured work…"; finderSection = "Featured"; openWindow("finder"); rerenderFinder(); }
@@ -637,7 +702,7 @@ function runTerminal(event) {
   if (normalized === "archive") { reply = "Opening version history…"; openByName("archive"); }
   if (normalized === "human") { reply = "Pausing LeetCode. Opening human stuff…"; openWindow("human"); }
   if (normalized === "shell") { reply = "Opening the safe shell case study…"; openProject("unix-shell"); }
-  if (normalized === "resume") { reply = "Opening Shivanya_Resume.pdf…"; openWindow("resume"); }
+  if (normalized === "safedesk") { reply = "Opening SafeDesk… requesting minimum necessary access…"; openProject("safedesk"); }
   if (normalized === "contact" || normalized === "sudo hire-shivanya") { reply = normalized.startsWith("sudo") ? "Permission granted. Opening contact routes…" : "Opening Mail…"; openWindow("mail"); }
   if (normalized === "git status") reply = "On branch building-better-systems\nmodified: portfolio_depth\nuntracked: reasonable_sleep_schedule";
   if (normalized === "clear") { output.innerHTML = ""; input.value = ""; return; }
@@ -673,7 +738,7 @@ function closeMenus() {
 }
 
 const topMenus = {
-  file: `<p>FILE</p><button data-menu="start">Open recruiter fast path <kbd>⌘ 1</kbd></button><button data-menu="resume">Preview résumé</button><a href="${RESUME_PATH}" download>Download résumé <span>↧</span></a><a href="https://github.com/shivanya-chandra" target="_blank" rel="noreferrer">Open GitHub <span>↗</span></a><button data-copy-email>Copy email</button>`,
+  file: `<p>FILE</p><button data-menu="start">Open recruiter fast path <kbd>⌘ 1</kbd></button><button data-project-menu="safedesk">Open SafeDesk</button><a href="https://github.com/shivanya-chandra" target="_blank" rel="noreferrer">Open GitHub <span>↗</span></a><button data-copy-email>Copy email</button>`,
   view: `<p>VIEW</p><button data-view-mode="desktop">Desktop view</button><button data-view-mode="recruiter">Recruiter / list view</button><button data-action="maximize">Maximize active window</button><button data-action="minimize">Minimize active window</button>`,
   navigate: `<p>NAVIGATE</p><button data-menu="start">Start here</button><button data-menu="current">Current work</button><button data-menu="finder">Featured projects</button><button data-menu="experience">Experience</button><button data-menu="research">Research lab</button><button data-menu="archive">Archive</button><button data-menu="human">Human stuff</button>`,
   help: `<p>KEYBOARD</p><div class="shortcut-row"><kbd>⌘ K</kbd><span>Open command palette</span></div><div class="shortcut-row"><kbd>⌘ 1</kbd><span>Recruiter fast path</span></div><div class="shortcut-row"><kbd>⌘ A</kbd><span>About Shivanya</span></div><div class="shortcut-row"><kbd>ESC</kbd><span>Close menus or active window</span></div><button data-menu="about">About this interface</button>`
@@ -706,6 +771,7 @@ document.querySelectorAll("[data-top-menu]").forEach(button => button.addEventLi
   button.classList.add("menu-active");
   menu.querySelectorAll("[data-menu]").forEach(item => item.addEventListener("click", () => { const destination = item.dataset.menu; closeMenus(); openByName(destination); }));
   menu.querySelectorAll("[data-copy-email]").forEach(item => item.addEventListener("click", () => { closeMenus(); copyEmail(); }));
+  menu.querySelectorAll("[data-project-menu]").forEach(item => item.addEventListener("click", () => { const slug = item.dataset.projectMenu; closeMenus(); openProject(slug); }));
   menu.querySelectorAll("[data-view-mode]").forEach(item => item.addEventListener("click", () => {
     const recruiter = item.dataset.viewMode === "recruiter";
     document.body.classList.toggle("recruiter-mode", recruiter);
@@ -735,14 +801,16 @@ const paletteInput = document.getElementById("palette-input");
 const paletteItems = [
   { label: "Start here · 30-second view", hint: "Recruiter path", action: () => openWindow("start") },
   { label: "Show current work", hint: "Active processes", action: () => openWindow("activity") },
+  { label: "Open SafeDesk", hint: "Current project", action: () => openProject("safedesk") },
   { label: "Open Custom Unix Shell", hint: "Project", action: () => openProject("unix-shell") },
   { label: "Open RouteWise", hint: "Project", action: () => openProject("routewise") },
   { label: "Open Nokia observability", hint: "Public-safe case study", action: () => openProject("nokia-observability") },
   { label: "Browse experience", hint: "Timeline", action: () => openByName("experience") },
+  { label: "Open Teaching Assistant", hint: "CS 18000", action: () => openProject("teaching") },
+  { label: "Open Health & Human Sciences", hint: "Public summary", action: () => openProject("hhs") },
   { label: "Browse Research Lab", hint: "Experiments", action: () => openByName("research") },
   { label: "Go to Human Stuff", hint: "Outside work", action: () => openWindow("human") },
   { label: "Browse Archive", hint: "Version history", action: () => openByName("archive") },
-  { label: "Preview résumé", hint: "PDF", action: () => openWindow("resume") },
   { label: "Copy email", hint: EMAIL, action: copyEmail },
   { label: "Contact Shivanya", hint: "Mail", action: () => openWindow("mail") }
 ];
@@ -783,6 +851,64 @@ document.addEventListener("keydown", event => {
   }
 });
 
+const mobileTitles = {
+  start: "30-second view", about: "About", projects: "Featured Work", research: "Research Lab",
+  experience: "Experience", human: "Human Stuff", archive: "Archive", contact: "Contact", activity: "Current Processes", project: "Project"
+};
+
+function mobileProjectCard(slug) {
+  const project = projectData[slug];
+  return `<button data-mobile-project="${slug}" class="mobile-list-card"><span>${project.kind === "research" ? "∿" : project.kind === "current" ? "⌁" : "↗"}</span><div><small>${escapeHtml(project.status)}</small><strong>${escapeHtml(project.title)}</strong><p>${escapeHtml(project.summary)}</p></div><i>›</i></button>`;
+}
+
+function mobileProjectTemplate(slug) {
+  const project = allProject(slug);
+  return `<div class="mobile-project-page" data-mobile-project-view="${slug}"><header class="kind-${project.kind}"><p>${escapeHtml(project.eyebrow)}</p><span>${escapeHtml(project.status)}</span><h1>${escapeHtml(project.title)}</h1><strong>${escapeHtml(project.hook)}</strong><small>${escapeHtml(project.period)}</small></header><div class="mobile-metrics">${project.metrics.map(metric => `<span>${escapeHtml(metric)}</span>`).join("")}</div>${visualForProject(slug)}<section class="mobile-project-sections">${project.sections.map((section,index) => `<article><small>${String(index + 1).padStart(2,"0")} · ${escapeHtml(section.title.toUpperCase())}</small><h2>${escapeHtml(section.title)}</h2><p>${escapeHtml(section.body)}</p>${section.bullets ? `<ul>${section.bullets.map(bullet => `<li>${escapeHtml(bullet)}</li>`).join("")}</ul>` : ""}${section.takeaway ? `<blockquote>${escapeHtml(section.takeaway)}</blockquote>` : ""}</article>`).join("")}</section></div>`;
+}
+
+function mobileAppTemplate(name) {
+  if (name === "start") return `<div class="mobile-simple-page"><p class="mobile-eyebrow">RECRUITER FAST PATH</p><h1>The useful version, before the side quests.</h1><p>Backend and AI systems engineer focused on observability, reliability, developer tools, and explanations people can actually use.</p><div class="mobile-quick-facts"><span><small>BUILDING</small><strong>SafeDesk</strong>Permission model in progress</span><span><small>CURRENT</small><strong>Nokia observability</strong>Pipeline signals + failure visibility</span><span><small>FEATURED</small><strong>RouteWise</strong>52% lower inference cost</span><span><small>TEACHING</small><strong>CS 18000</strong>200+ students supported weekly</span></div><button class="mobile-primary" data-mobile-open="projects">View featured work ↗</button><button class="mobile-secondary" data-mobile-open="contact">Contact me</button></div>`;
+  if (name === "about") return `<div class="mobile-simple-page"><p class="mobile-eyebrow">SHIVANYA CHANDRA</p><h1>Systems → signals → understanding.</h1><p>I study Computer Science and Artificial Intelligence at Purdue, with a psychology minor that keeps me thinking about the human side of systems. I like technical work that becomes reliable, inspectable, and genuinely useful.</p><div class="mobile-info-cards"><article><small>HOW I THINK</small><strong>The system and the user’s mental model are both part of the product.</strong></article><article><small>WHY I BUILD</small><strong>I like turning invisible behavior into something a team can reason about.</strong></article><article><small>RIGHT NOW</small><strong>Safe desktop agents, observability, teaching, and occasionally touching grass.</strong></article></div></div>`;
+  if (name === "projects") return `<div class="mobile-simple-page"><p class="mobile-eyebrow">FEATURED · SWIPE THROUGH</p><h1>Current and representative work.</h1><div class="mobile-project-stack">${["safedesk","nokia-observability","routewise","unix-shell"].map(mobileProjectCard).join("")}</div></div>`;
+  if (name === "research") return `<div class="mobile-simple-page"><p class="mobile-eyebrow">RESEARCH LAB</p><h1>Questions, experiments, and measured results.</h1><div class="mobile-project-stack">${["rag-reliability","hazard-detection","robotic-arm"].map(mobileProjectCard).join("")}</div></div>`;
+  if (name === "experience") return `<div class="mobile-simple-page"><p class="mobile-eyebrow">EXPERIENCE</p><h1>The work behind the timeline.</h1><div class="mobile-timeline">${experienceTimeline.map(item => `<button data-mobile-project="${item.slug}"><small>${item.period}</small><span></span><div><strong>${item.title}</strong><p>${item.sub}</p></div><i>›</i></button>`).join("")}</div></div>`;
+  if (name === "human") return `<div class="mobile-simple-page mobile-human-page"><p class="mobile-eyebrow">AFK, OCCASIONALLY</p><h1>Outside the Terminal</h1><p>Boxing, dance, gym, travel, and ordinary Purdue moments—the parts that are not supposed to become productivity metrics.</p><div class="mobile-human-grid">${[["🥊","Boxing","No tabs open."],["♪","Dance","Probably counting."],["↟","Gym","Tiny plates count."],["✈","Travel","Better snacks."],["P","Purdue","Labs + late walks."],["☕","Ordinary days","Usually the good bits."]].map(item => `<article><span>${item[0]}</span><strong>${item[1]}</strong><small>${item[2]}</small></article>`).join("")}</div><p class="mobile-photo-note">Photo slots remain intentionally empty until I choose real personal images to publish.</p></div>`;
+  if (name === "archive") return `<div class="mobile-simple-page"><p class="mobile-eyebrow">VERSION HISTORY</p><h1>Earlier projects still worth remembering.</h1><div class="mobile-project-stack">${archive.map(item => `<button data-mobile-project="${item.slug}" class="mobile-list-card"><span>⌂</span><div><small>${item.status}</small><strong>${item.title}</strong><p>${item.sub}</p></div><i>›</i></button>`).join("")}</div></div>`;
+  if (name === "contact") return `<div class="mobile-simple-page"><p class="mobile-eyebrow">DIRECT CONNECTIONS</p><h1>Let’s build something that explains itself.</h1><p>No form required. Pick the route that works for you.</p><div class="mobile-contact-links"><a href="mailto:${EMAIL}"><span>@</span><div><small>EMAIL</small><strong>${EMAIL}</strong></div></a><a href="https://github.com/shivanya-chandra" target="_blank" rel="noreferrer"><span>GH</span><div><small>GITHUB</small><strong>shivanya-chandra</strong></div></a><a href="https://linkedin.com/in/shivanya-chandra" target="_blank" rel="noreferrer"><span>in</span><div><small>LINKEDIN</small><strong>/in/shivanya-chandra</strong></div></a><button data-copy-email>Copy email address</button></div></div>`;
+  if (name === "activity") return `<div class="mobile-simple-page"><p class="mobile-eyebrow">NOTIFICATION CENTER</p><h1>Current processes</h1><div class="mobile-notification-list"><button data-mobile-project="safedesk"><span>⌁</span><div><strong>SafeDesk</strong><p>Permission model updated</p></div></button><button data-mobile-project="teaching"><span>{ }</span><div><strong>Teaching</strong><p>Student successfully defeated recursion</p></div></button><button data-mobile-open="human"><span>✦</span><div><strong>Human Stuff</strong><p>Screen time exceeded. Go boxing.</p></div></button><button data-mobile-open="start"><span>↗</span><div><strong>Portfolio</strong><p>Recruiter fast path ready</p></div></button></div></div>`;
+  return "";
+}
+
+function attachMobileContent() {
+  const content = document.getElementById("mobile-app-content");
+  content.querySelectorAll("[data-mobile-open]").forEach(button => button.addEventListener("click", () => openMobileApp(button.dataset.mobileOpen)));
+  content.querySelectorAll("[data-mobile-project]").forEach(button => button.addEventListener("click", () => openMobileProject(button.dataset.mobileProject)));
+  content.querySelectorAll("[data-copy-email]").forEach(button => button.addEventListener("click", copyEmail));
+  content.querySelectorAll("[data-safe-action]").forEach(button => button.addEventListener("click", () => runSafeDeskDemo(button.dataset.safeAction, content)));
+  content.querySelectorAll("[data-teaching-issue]").forEach(button => button.addEventListener("click", () => runTeachingDemo(button.dataset.teachingIssue, content)));
+  const pid = content.querySelector("#pid-toggle");
+  if (pid) pid.addEventListener("change", () => updatePidDemo(pid, content));
+}
+
+function showMobileView(title, html) {
+  document.getElementById("mobile-home").hidden = true;
+  const view = document.getElementById("mobile-app-view");
+  view.hidden = false;
+  document.getElementById("mobile-app-title").textContent = title;
+  document.getElementById("mobile-app-content").innerHTML = html;
+  view.scrollTop = 0;
+  attachMobileContent();
+}
+
+function openMobileApp(name) { showMobileView(mobileTitles[name] || name, mobileAppTemplate(name)); }
+function openMobileProject(slug) { const project = allProject(slug); if (project) showMobileView(project.title, mobileProjectTemplate(slug)); }
+function closeMobileApp() { document.getElementById("mobile-app-view").hidden = true; document.getElementById("mobile-home").hidden = false; document.getElementById("mobile-os").scrollTop = 0; }
+
+document.querySelectorAll("[data-mobile-open]").forEach(button => button.addEventListener("click", () => openMobileApp(button.dataset.mobileOpen)));
+document.querySelectorAll("[data-mobile-project]").forEach(button => button.addEventListener("click", () => openMobileProject(button.dataset.mobileProject)));
+document.getElementById("mobile-back").addEventListener("click", closeMobileApp);
+document.getElementById("mobile-home-button").addEventListener("click", closeMobileApp);
+
 function hideBoot() {
   document.getElementById("boot").style.display = "none";
   localStorage.setItem("shivanyaos-preview-booted", "true");
@@ -790,7 +916,12 @@ function hideBoot() {
 
 document.getElementById("skip-boot").addEventListener("click", hideBoot);
 setTimeout(hideBoot, localStorage.getItem("shivanyaos-preview-booted") ? 100 : 920);
-function updateClock() { document.getElementById("clock").textContent = new Intl.DateTimeFormat(undefined, { hour: "numeric", minute: "2-digit" }).format(new Date()); }
+function updateClock() {
+  const now = new Date();
+  document.getElementById("clock").textContent = new Intl.DateTimeFormat(undefined, { hour: "numeric", minute: "2-digit" }).format(now);
+  document.getElementById("mobile-clock").textContent = new Intl.DateTimeFormat(undefined, { hour: "numeric", minute: "2-digit" }).format(now);
+  document.getElementById("mobile-date").textContent = new Intl.DateTimeFormat(undefined, { weekday: "long", month: "long", day: "numeric" }).format(now);
+}
 updateClock();
 setInterval(updateClock, 30000);
-openWindow("about");
+openWindow("home");

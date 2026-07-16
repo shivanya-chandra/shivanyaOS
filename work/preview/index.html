@@ -5,13 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Shivanya Chandra's portfolio: backend systems, AI infrastructure, observability, research, teaching, and the person outside the terminal." />
     <title>ShivanyaOS · Shivanya Chandra</title>
+    <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
     <main class="os-root">
       <div class="boot-screen" id="boot" role="dialog" aria-label="Starting ShivanyaOS">
         <div class="boot-card">
-          <div class="boot-logo">SC</div>
+          <div class="boot-logo signal-loop" aria-hidden="true">
+            <svg viewBox="0 0 72 72" role="img"><path d="M57 14H31C17 14 10 20 10 29s8 14 21 14h12c10 0 17 5 17 13s-7 12-19 12H15"/><circle cx="53" cy="14" r="4"/></svg>
+          </div>
           <h1>Starting ShivanyaOS<span class="blink">_</span></h1>
           <div class="boot-lines">
             <p>Loading systems engineering <span>done</span></p>
@@ -27,7 +30,7 @@
 
       <header class="menu-bar">
         <div class="menu-left">
-          <button class="brand-menu" id="brand-menu" aria-expanded="false">◉ <strong>ShivanyaOS</strong></button>
+          <button class="brand-menu" id="brand-menu" aria-expanded="false"><span class="brand-signal" aria-hidden="true"><svg viewBox="0 0 72 72"><path d="M57 14H31C17 14 10 20 10 29s8 14 21 14h12c10 0 17 5 17 13s-7 12-19 12H15"/><circle cx="53" cy="14" r="4"/></svg></span><strong>ShivanyaOS</strong></button>
           <button data-top-menu="file">File</button><button data-top-menu="view">View</button><button data-top-menu="navigate">Navigate</button><button data-top-menu="help">Help</button>
         </div>
         <div class="current-process"><span class="status-dot"></span>Current process: Building systems that explain themselves</div>
@@ -36,7 +39,6 @@
           <button data-menu="about"><span>About This Shivanya</span><kbd>⌘ A</kbd></button>
           <button data-menu="start"><span>Recruiter fast path</span></button>
           <button data-menu="activity"><span>Active processes</span></button>
-          <a href="../../public/Shivanya_Resume.pdf" download>Download résumé <span>↧</span></a>
           <div class="menu-separator"></div>
           <button id="restart"><span>Restart Portfolio</span></button>
         </div>
@@ -54,7 +56,6 @@
           <button class="desktop-icon" data-open="finder"><span class="desktop-icon-art lavender">⌁</span><span>Projects</span></button>
           <button class="desktop-icon" data-open="research"><span class="desktop-icon-art mint">∿</span><span>Research Lab</span></button>
           <button class="desktop-icon" data-open="human"><span class="desktop-icon-art coral">✦</span><span>Human Stuff</span></button>
-          <button class="desktop-icon" data-open="resume"><span class="desktop-icon-art yellow">PDF</span><span>Shivanya_Resume.pdf</span></button>
         </div>
         <div class="windows-layer" id="windows"></div>
         <nav class="dock" aria-label="Applications">
@@ -65,10 +66,31 @@
           <button class="dock-item" data-open="human" data-tooltip="Outside the Terminal"><span class="app-icon icon-human">✦</span></button>
           <button class="dock-item" data-open="notes" data-tooltip="Eventually, This Made Sense"><span class="app-icon icon-notes">≡</span></button>
           <button class="dock-item" data-open="terminal" data-tooltip="Terminal"><span class="app-icon icon-terminal">&gt;_</span></button>
-          <button class="dock-item" data-open="resume" data-tooltip="Shivanya_Resume.pdf"><span class="app-icon icon-resume">PDF</span></button>
           <button class="dock-item" data-open="mail" data-tooltip="Mail Shivanya"><span class="app-icon icon-mail">↗</span></button>
         </nav>
         <div class="running-processes" id="running-processes" aria-live="polite" hidden></div>
+      </section>
+
+      <section class="mobile-os" id="mobile-os" aria-label="ShivanyaOS Mobile">
+        <div class="mobile-home" id="mobile-home">
+          <header class="mobile-status"><div><strong id="mobile-clock">1:47</strong><span id="mobile-date">Thursday, July 16</span></div><span class="mobile-signal-mark" aria-hidden="true"><svg viewBox="0 0 72 72"><path d="M57 14H31C17 14 10 20 10 29s8 14 21 14h12c10 0 17 5 17 13s-7 12-19 12H15"/><circle cx="53" cy="14" r="4"/></svg></span></header>
+          <section class="mobile-greeting"><p>SHIVANYAOS MOBILE</p><h1>Hi, I’m Shivanya.</h1><span>Building systems that explain themselves.</span></section>
+          <button class="mobile-overview-widget" data-mobile-open="start"><span><small>30-SECOND VIEW</small><strong>Recruiter fast path ready</strong></span><i>↗</i></button>
+          <section class="mobile-featured"><div class="mobile-section-title"><strong>Featured</strong><button data-mobile-open="projects">See all</button></div><div><button data-mobile-project="safedesk"><span class="mobile-project-art shield-cursor">⌁</span><strong>SafeDesk</strong><small>In development</small></button><button data-mobile-project="nokia-observability"><span class="mobile-project-art signal-grid">◎</span><strong>Nokia</strong><small>Observability</small></button></div></section>
+          <section class="mobile-apps"><div class="mobile-section-title"><strong>Apps</strong><span>tap to open</span></div><div class="mobile-app-grid">
+            <button data-mobile-open="about"><span class="mobile-icon about-icon">SC</span><strong>About</strong></button>
+            <button data-mobile-open="projects"><span class="mobile-icon projects-icon">&gt;_</span><strong>Projects</strong></button>
+            <button data-mobile-open="research"><span class="mobile-icon research-icon">∿</span><strong>Research</strong></button>
+            <button data-mobile-open="experience"><span class="mobile-icon experience-icon">▤</span><strong>Experience</strong></button>
+            <button data-mobile-project="teaching"><span class="mobile-icon teaching-icon">{ }</span><strong>Teaching</strong></button>
+            <button data-mobile-open="human"><span class="mobile-icon human-icon">✦</span><strong>Human Stuff</strong></button>
+            <button data-mobile-open="archive"><span class="mobile-icon archive-icon">⌂</span><strong>Archive</strong></button>
+            <button data-mobile-open="contact"><span class="mobile-icon contact-icon">↗</span><strong>Contact</strong></button>
+          </div></section>
+          <button class="mobile-notifications" data-mobile-open="activity"><span>3</span><div><strong>Current processes</strong><small>SafeDesk · teaching · occasionally touching grass</small></div><i>›</i></button>
+        </div>
+        <article class="mobile-app-view" id="mobile-app-view" hidden><header><button id="mobile-back" aria-label="Back to ShivanyaOS Mobile">‹</button><strong id="mobile-app-title">App</strong><button id="mobile-home-button" aria-label="Return home">⌂</button></header><div id="mobile-app-content"></div></article>
+        <nav class="mobile-dock" aria-label="Mobile navigation"><button data-mobile-open="about"><span>SC</span><small>About</small></button><button data-mobile-open="projects"><span>&gt;_</span><small>Work</small></button><button data-mobile-open="research"><span>∿</span><small>Research</small></button><button data-mobile-open="human"><span>✦</span><small>Human</small></button></nav>
       </section>
 
       <div class="palette-backdrop" id="palette" hidden>

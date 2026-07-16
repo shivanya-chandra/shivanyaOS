@@ -2,13 +2,13 @@ import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import test from "node:test";
 
-async function render() {
+async function render(pathname = "/") {
   const workerUrl = new URL("../dist/server/index.js", import.meta.url);
   workerUrl.searchParams.set("test", `${process.pid}-${Date.now()}`);
   const { default: worker } = await import(workerUrl.href);
 
   return worker.fetch(
-    new Request("http://localhost/", {
+    new Request(`http://localhost${pathname}`, {
       headers: { accept: "text/html" },
     }),
     {
@@ -45,7 +45,7 @@ test("keeps finished-site metadata and source content", async () => {
   assert.match(page, /ShivanyaOS/);
   assert.match(page, /AI Pipeline Observability/);
   assert.match(page, /RAG Reliability Evaluation/);
-  assert.match(page, /Shivanya_Resume\.pdf/);
+  assert.doesNotMatch(page, /résumé|resume|Shivanya_Resume/i);
   assert.match(layout, /title:\s*"ShivanyaOS · Shivanya Chandra"/);
   assert.match(packageJson, /"name": "shivanya-os"/);
   assert.doesNotMatch(page, /SkeletonPreview|codex-preview/);
@@ -61,9 +61,17 @@ test("keeps the Cloudflare portfolio deep, human, and recruiter-friendly", async
   assert.match(html, /Start Here/);
   assert.match(html, /Human Stuff/);
   assert.match(javascript, /Outside the Terminal/);
+  assert.match(javascript, /SafeDesk/);
+  assert.match(javascript, /Object-Oriented Programming Teaching Assistant/);
+  assert.match(javascript, /Purdue College of Health and Human Sciences/);
+  assert.match(html, /ShivanyaOS Mobile/);
   assert.match(javascript, /Not every prompt deserves the most expensive model/);
   assert.match(javascript, /30-second failure visibility/);
   assert.match(javascript, /RAG Reliability Evaluation/);
-  assert.match(javascript, /Shivanya_Resume\.pdf/);
-  assert.doesNotMatch(`${html}\n${javascript}`, /Shivanya_SWE\.pdf/);
+  assert.doesNotMatch(`${html}\n${javascript}`, /résumé|resume|Shivanya_Resume/i);
+});
+
+test("does not publish a résumé asset", async () => {
+  const response = await render("/Shivanya_Resume.pdf");
+  assert.equal(response.status, 404);
 });
